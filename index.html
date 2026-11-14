@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piyush & Sabhya | Wedding Celebration | 21 Nov 2026</title>
+    <title>Piyush & Sabhya | Illustrated Wedding Invitation | 21 Nov 2026</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Rozha+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Rozha+One&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,34 +21,30 @@
                 extend: {
                     colors: {
                         cream: {
-                            DEFAULT: '#FDFBF3',
-                            warm: '#F9F1DF',
-                            peach: '#FCEAD2',
-                            sand: '#EED9B3'
+                            light: '#FFFDF9',
+                            DEFAULT: '#FDF8F0',
+                            warm: '#F7EBD9',
+                            peach: '#FCEAD7'
                         },
                         lavender: {
-                            light: '#D9C2E9',
+                            light: '#D8BFD8',
                             DEFAULT: '#9B6B9E',
                             deep: '#683A6C',
-                            dark: '#3D1E42'
+                            dark: '#432147'
+                        },
+                        gold: {
+                            light: '#FBF0C9',
+                            DEFAULT: '#D4AF37',
+                            antique: '#B5892E',
+                            dark: '#7A5813'
                         },
                         espresso: {
-                            DEFAULT: '#3B2818',
+                            DEFAULT: '#3A2615',
                             soft: '#5C4028'
                         },
                         crimson: {
-                            DEFAULT: '#7A111E',
-                            deep: '#4A070F'
-                        },
-                        gold: {
-                            DEFAULT: '#D4AF37',
-                            light: '#F5E29C',
-                            bright: '#FFD700',
-                            dark: '#99731C'
-                        },
-                        marigold: {
-                            DEFAULT: '#FF9933',
-                            haldi: '#FFC72C'
+                            DEFAULT: '#8B1E24',
+                            deep: '#5A0812'
                         }
                     },
                     fontFamily: {
@@ -66,1127 +62,1621 @@
 
     <style>
         :root {
-            --watercolor-bg: radial-gradient(circle at 50% 25%, #FFFDF9 0%, #FDF5E6 45%, #FCEAD2 80%, #F5DEC0 100%);
-            --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --watercolor-bg: radial-gradient(circle at 50% 25%, #FFFDF9 0%, #FDF6EC 45%, #F6E4CE 100%);
+            --gold-foil: linear-gradient(135deg, #AA771C 0%, #DFB760 25%, #8C6214 50%, #F5E1A4 75%, #9B6E18 100%);
         }
 
         body {
             background: var(--watercolor-bg);
-            color: #3B2818;
+            color: #3A2615;
             overflow-x: hidden;
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Watercolor Paper Texture Overlay */
-        .watercolor-stage {
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(217, 194, 233, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(217, 194, 233, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 50% 45%, rgba(255, 250, 240, 0.95) 0%, rgba(252, 234, 210, 0.85) 65%, rgba(244, 216, 180, 0.9) 100%);
+        /* Subtle Watercolor Paper Grain Overlay */
+        .watercolor-paper {
+            background-image: 
+                radial-gradient(at 15% 15%, rgba(216, 191, 216, 0.28) 0px, transparent 50%),
+                radial-gradient(at 85% 20%, rgba(255, 218, 185, 0.35) 0px, transparent 50%),
+                radial-gradient(at 50% 80%, rgba(212, 175, 55, 0.16) 0px, transparent 60%);
         }
 
-        /* Shimmering Gold Foil Text */
         .gold-foil-text {
-            background: var(--gold-gradient);
+            background: var(--gold-foil);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: foilShine 5s linear infinite;
+            animation: shineFoil 6s linear infinite;
         }
-        @keyframes foilShine {
+
+        @keyframes shineFoil {
             to { background-position: 200% center; }
         }
 
-        /* =====================================================
-           SUPER COOL 3D ENVELOPE OPENING ANIMATION STYLES
-           ===================================================== */
-        .envelope-scene {
-            perspective: 1800px;
+        /* ==========================================
+           3D ROYAL ENVELOPE OPENING ANIMATION
+           ========================================== */
+        .envelope-stage {
+            perspective: 1600px;
+            transition: opacity 0.9s ease, visibility 0.9s ease;
         }
-        .envelope-3d-wrapper {
+        .envelope-stage.stage-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 340px;
+            height: 235px;
             transform-style: preserve-3d;
-            transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.9s ease;
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
         }
-        .envelope-3d-wrapper:hover {
+        @media (min-width: 640px) {
+            .envelope-wrapper {
+                width: 460px;
+                height: 310px;
+            }
+        }
+        .envelope-wrapper:hover {
             transform: translateY(-6px) rotateX(4deg);
         }
+        .envelope-wrapper.opening {
+            transform: translateY(70px) scale(1.03);
+        }
 
-        /* Top Triangular Flap of the 3D Envelope */
-        .envelope-flap {
+        /* Envelope Back */
+        .env-back {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, #5d3261, #421f46);
+            border-radius: 14px;
+            box-shadow: 0 30px 70px rgba(45, 18, 48, 0.55), 0 0 0 2px #D4AF37;
+            z-index: 1;
+        }
+
+        /* Inner Sliding Illustrated Card */
+        .env-card {
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            bottom: 8%;
+            height: 88%;
+            background: linear-gradient(180deg, #FFFDF9 0%, #FDF3E1 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            z-index: 2;
+            transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.45s, box-shadow 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .envelope-wrapper.opening .env-card {
+            transform: translateY(-155px) scale(1.06);
+            box-shadow: 0 25px 60px rgba(58, 38, 21, 0.45);
+            z-index: 6;
+        }
+
+        /* Envelope Front Pocket Folds */
+        .env-pocket {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .env-pocket::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #86548a 0%, #683A6C 50%, #522956 100%);
+            clip-path: polygon(0 0, 52% 55%, 0 100%);
+            border-right: 1px solid rgba(212,175,55,0.4);
+        }
+        .env-pocket::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, #86548a 0%, #683A6C 50%, #522956 100%);
+            clip-path: polygon(100% 0, 48% 55%, 100% 100%);
+        }
+        .env-bottom-fold {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            border-radius: 14px;
+            background: linear-gradient(0deg, #562b5a 0%, #78467c 100%);
+            clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.25);
+            border-top: 2px solid #D4AF37;
+        }
+
+        /* 3D Top Flap */
+        .env-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 62%;
+            background: linear-gradient(180deg, #9B6B9E 0%, #683A6C 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
             transform-origin: top center;
-            transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.4s;
-            transform-style: preserve-3d;
-            z-index: 30;
+            transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.1s 0.35s;
+            z-index: 5;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.35));
+        }
+        .envelope-wrapper.opening .env-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
         }
 
-        /* Rising Invitation Card Inside the Envelope */
-        .envelope-rising-card {
-            transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s, box-shadow 0.8s ease 0.45s;
-            z-index: 15;
+        /* Gold Wax Seal on Flap */
+        .env-wax-seal {
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 7;
+            transition: transform 0.55s ease, opacity 0.45s ease;
+            animation: sealGlow 2.2s infinite ease-in-out;
+        }
+        .envelope-wrapper.opening .env-wax-seal {
+            transform: translate(-50%, -50%) scale(1.45) rotate(20deg);
+            opacity: 0;
         }
 
-        /* Wax Seal Button */
-        @keyframes waxPulse {
+        @keyframes sealGlow {
             0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 55px rgba(155, 107, 158, 0.5);
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 45px rgba(255, 215, 0, 0.4);
             }
             50% {
-                transform: translate(-50%, -50%) scale(1.08);
-                box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 153, 51, 0.8);
+                box-shadow: 0 0 35px rgba(255, 215, 0, 1), 0 0 70px rgba(255, 180, 50, 0.75);
             }
         }
-        .wax-seal-3d {
-            animation: waxPulse 2.2s infinite ease-in-out;
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
-        }
 
-        /* Shockwave Ring on Click */
-        .seal-shockwave {
-            transform: translate(-50%, -50%) scale(0.5);
-            opacity: 0;
-            pointer-events: none;
+        /* Envelope Curtain Reveal */
+        .stage-curtain-left, .stage-curtain-right {
+            transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1) 0.9s;
         }
-        .envelope-is-opening .seal-shockwave {
-            animation: shockwaveExpand 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes shockwaveExpand {
-            0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
-        }
-
-        /* Triggered States When Envelope Opens */
-        .envelope-is-opening .wax-seal-3d {
-            transform: translate(-50%, -50%) scale(1.7) rotate(20deg) !important;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .envelope-is-opening .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: 5;
-        }
-        .envelope-is-opening .envelope-rising-card {
-            transform: translateY(-135px) scale(1.06);
-            box-shadow: 0 25px 60px rgba(59, 40, 24, 0.45);
-        }
-        .envelope-zoom-away {
-            transform: scale(1.35) translateY(40px) !important;
-            opacity: 0 !important;
-            pointer-events: none;
-        }
-
-        /* Stage Lavender Curtain Parting Transition */
-        .curtain-left-panel {
-            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-        .curtain-right-panel {
-            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-        .curtains-parted .curtain-left-panel {
+        .envelope-stage.curtains-part .stage-curtain-left {
             transform: translateX(-100%);
         }
-        .curtains-parted .curtain-right-panel {
+        .envelope-stage.curtains-part .stage-curtain-right {
             transform: translateX(100%);
         }
 
-        /* =====================================================
-           FLOODLIGHTZ STAGE, FAIRY LIGHTS, COUPLE DANCE & GRAMOPHONE
-           ===================================================== */
-        @keyframes fairyTwinkle {
-            0%, 100% { opacity: 0.45; transform: scale(0.85); }
-            50% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 8px #FFD700); }
-        }
-        .fairy-bulb {
-            animation: fairyTwinkle 2.4s infinite ease-in-out;
-        }
-        .fairy-bulb-delay-1 { animation-delay: 0.5s; }
-        .fairy-bulb-delay-2 { animation-delay: 1.1s; }
-        .fairy-bulb-delay-3 { animation-delay: 1.7s; }
-
-        /* Couple Joyful Dancing Sway & Bounce */
-        @keyframes coupleDance {
+        /* ==========================================
+           COUPLE DANCING & FLOATING ANIMATIONS
+           ========================================== */
+        @keyframes coupleDanceBob {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             25% { transform: translateY(-7px) rotate(-1.2deg); }
             50% { transform: translateY(-2px) rotate(0.8deg); }
             75% { transform: translateY(-8px) rotate(1.4deg); }
         }
         .couple-dancing {
-            animation: coupleDance 3.2s ease-in-out infinite;
-            transform-origin: bottom center;
+            animation: coupleDanceBob 3.2s ease-in-out infinite;
+        }
+        .couple-hyper-dance {
+            animation: coupleDanceBob 1.1s ease-in-out infinite !important;
         }
 
-        @keyframes armWaveLeft {
+        @keyframes groomArmWave {
             0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(-9deg); }
+            50% { transform: rotate(-11deg); }
         }
-        @keyframes armWaveRight {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
-        }
-        .dance-arm-left {
-            transform-origin: 200px 210px;
-            animation: armWaveLeft 1.6s ease-in-out infinite;
-        }
-        .dance-arm-right {
-            transform-origin: 315px 190px;
-            animation: armWaveRight 1.5s ease-in-out infinite;
+        .groom-arm-wave {
+            transform-origin: 65% 45%;
+            animation: groomArmWave 1.6s ease-in-out infinite;
         }
 
-        /* Vintage Gramophone Horn Pulse & Floating Musical Notes */
-        @keyframes gramophonePulse {
-            0%, 100% { transform: scale(1) rotate(0deg); }
+        @keyframes brideArmSway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(9deg); }
+        }
+        .bride-arm-sway {
+            transform-origin: 35% 45%;
+            animation: brideArmSway 1.8s ease-in-out infinite;
+        }
+
+        /* Twinkling Fairy String Lights */
+        @keyframes bulbTwinkle {
+            0%, 100% { opacity: 0.45; transform: scale(0.88); }
+            50% { opacity: 1; transform: scale(1.22); filter: drop-shadow(0 0 8px #FFE57F); }
+        }
+        .fairy-bulb-1 { animation: bulbTwinkle 2.1s infinite ease-in-out; }
+        .fairy-bulb-2 { animation: bulbTwinkle 2.7s infinite ease-in-out 0.6s; }
+        .fairy-bulb-3 { animation: bulbTwinkle 1.9s infinite ease-in-out 1.1s; }
+
+        /* Gramophone Horn Pulse & Floating Musical Notes */
+        @keyframes hornPulse {
+            0%, 100% { transform: scale(1); }
             50% { transform: scale(1.06) rotate(-2deg); }
         }
-        .gramophone-horn-anim {
-            animation: gramophonePulse 1.4s ease-in-out infinite;
-            transform-origin: center center;
-        }
-
-        @keyframes floatMusicNote {
-            0% { transform: translate(0, 0) scale(0.6) rotate(0deg); opacity: 0; }
-            30% { opacity: 0.95; }
-            100% { transform: translate(25px, -75px) scale(1.25) rotate(20deg); opacity: 0; }
-        }
-        .music-note-float-1 { animation: floatMusicNote 2.8s infinite ease-out; }
-        .music-note-float-2 { animation: floatMusicNote 3.2s infinite ease-out 1.1s; }
-        .music-note-float-3 { animation: floatMusicNote 2.5s infinite ease-out 1.9s; }
-
-        /* Tropical Palm Sway */
-        @keyframes palmSway {
-            0%, 100% { transform: rotate(-2.5deg); }
-            50% { transform: rotate(2.5deg); }
-        }
-        .palm-sway {
+        .gramophone-active {
             transform-origin: bottom center;
-            animation: palmSway 5s ease-in-out infinite;
+            animation: hornPulse 1.4s ease-in-out infinite;
         }
 
-        /* Vinyl Spin */
-        @keyframes slowSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes floatNote {
+            0% { transform: translateY(0) scale(0.7); opacity: 0; }
+            30% { opacity: 0.95; }
+            100% { transform: translateY(-65px) translateX(20px) scale(1.25); opacity: 0; }
         }
-        .vinyl-spin {
-            animation: slowSpin 5s linear infinite;
-        }
-        .vinyl-paused {
-            animation-play-state: paused;
-        }
+        .music-note-1 { animation: floatNote 2.6s linear infinite; }
+        .music-note-2 { animation: floatNote 3.1s linear infinite 1.2s; }
 
-        /* Equalizer Bars */
-        @keyframes eqBar {
-            0%, 100% { height: 4px; }
-            50% { height: 16px; }
-        }
-        .eq-bar-1 { animation: eqBar 0.6s ease-in-out infinite; }
-        .eq-bar-2 { animation: eqBar 0.45s ease-in-out infinite 0.15s; }
-        .eq-bar-3 { animation: eqBar 0.75s ease-in-out infinite 0.3s; }
-        .eq-bar-4 { animation: eqBar 0.55s ease-in-out infinite 0.1s; }
-
-        /* 3D Flip Card for Hindi Entry Pass */
-        .flip-card-perspective { perspective: 1500px; }
-        .flip-card-inner {
+        /* 3D Flip Card for Hindi Gate Pass */
+        .flip-perspective { perspective: 1400px; }
+        .flip-inner {
             position: relative;
             width: 100%;
-            transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: transform 0.85s cubic-bezier(0.4, 0.2, 0.2, 1);
             transform-style: preserve-3d;
         }
-        .flip-card-inner.is-flipped { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
+        .flip-inner.flipped { transform: rotateY(180deg); }
+        .flip-front, .flip-back {
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
-        .flip-card-back {
+        .flip-back {
             transform: rotateY(180deg);
             position: absolute;
             inset: 0;
         }
 
-        /* Barat Marquee */
-        @keyframes baratWalk {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .barat-marquee {
-            animation: baratWalk 22s linear infinite;
-        }
-
         /* Scroll Reveal */
-        .reveal-up {
+        .reveal-item {
             opacity: 0;
             transform: translateY(35px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .reveal-up.active {
+        .reveal-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
-<body class="selection:bg-lavender selection:text-white">
+<body class="watercolor-paper selection:bg-lavender selection:text-white">
 
-    <!-- 1. CONTINUOUS 60FPS CONFETTI, MARIGOLD PETALS & FAIRY SPARKLES CANVAS -->
+    <!-- CONTINUOUS CONFETTI, MARIGOLD PETALS & FAIRY SPARKLES CANVAS -->
     <canvas id="celebrationCanvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
 
-    <!-- =====================================================================
-         2. SUPER COOL 3D INTERACTIVE ENVELOPE OPENING OVERLAY
-            Starts YouTube Song at 0:10 Immediately on Click!
-         ===================================================================== -->
-    <div id="envelopeOverlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden select-none" style="background: radial-gradient(circle at center, #FDF8EE 0%, #F2DEC4 55%, #4A254F 100%);">
+    <!-- =================================================================
+         1. SUPER COOL 3D ENVELOPE OPENING CEREMONY (STARTS MUSIC AT 0:10)
+         ================================================================= -->
+    <div id="envelopeStage" class="envelope-stage fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden select-none px-4" style="background: radial-gradient(circle at center, #FFFDF9 0%, #F5E1EB 55%, #DEC0D6 100%);">
         
-        <!-- Background Parting Lavender Curtains on Overlay -->
-        <div class="curtain-left-panel absolute top-0 left-0 w-1/2 h-full pointer-events-none z-0 opacity-90">
-            <svg class="w-full h-full preserve-3d" viewBox="0 0 400 800" preserveAspectRatio="none">
-                <defs>
-                    <linearGradient id="envCurtainL" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#5B3260"/>
-                        <stop offset="50%" stop-color="#8F5E94"/>
-                        <stop offset="100%" stop-color="#C39EC9" stop-opacity="0.15"/>
-                    </linearGradient>
-                </defs>
-                <path d="M0,0 L400,0 C310,180 180,350 90,520 C140,650 60,750 0,800 Z" fill="url(#envCurtainL)"/>
-            </svg>
-        </div>
-        <div class="curtain-right-panel absolute top-0 right-0 w-1/2 h-full pointer-events-none z-0 opacity-90">
-            <svg class="w-full h-full preserve-3d" viewBox="0 0 400 800" preserveAspectRatio="none">
-                <defs>
-                    <linearGradient id="envCurtainR" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#5B3260"/>
-                        <stop offset="50%" stop-color="#8F5E94"/>
-                        <stop offset="100%" stop-color="#C39EC9" stop-opacity="0.15"/>
-                    </linearGradient>
-                </defs>
-                <path d="M400,0 L0,0 C90,180 220,350 310,520 C260,650 340,750 400,800 Z" fill="url(#envCurtainR)"/>
-            </svg>
-        </div>
+        <!-- Left & Right Decorative Watercolor Curtain Wings on Intro Screen -->
+        <div class="stage-curtain-left absolute top-0 left-0 bottom-0 w-1/2 bg-gradient-to-r from-lavender-dark/95 via-lavender-deep/85 to-transparent pointer-events-none z-0"></div>
+        <div class="stage-curtain-right absolute top-0 right-0 bottom-0 w-1/2 bg-gradient-to-l from-lavender-dark/95 via-lavender-deep/85 to-transparent pointer-events-none z-0"></div>
 
-        <!-- Top Twinkling String Lights on Overlay -->
-        <div class="absolute top-0 inset-x-0 h-24 pointer-events-none z-10 flex justify-around items-start pt-2">
-            <span class="w-3 h-3 rounded-full bg-amber-200 shadow-[0_0_15px_#FFD700] fairy-bulb"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-100 shadow-[0_0_12px_#FFD700] fairy-bulb fairy-bulb-delay-1 mt-4"></span>
-            <span class="w-3.5 h-3.5 rounded-full bg-amber-200 shadow-[0_0_15px_#FFD700] fairy-bulb fairy-bulb-delay-2 mt-2"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-100 shadow-[0_0_12px_#FFD700] fairy-bulb fairy-bulb-delay-3 mt-5"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-200 shadow-[0_0_15px_#FFD700] fairy-bulb mt-1"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-100 shadow-[0_0_12px_#FFD700] fairy-bulb fairy-bulb-delay-2 mt-4"></span>
-        </div>
-
-        <!-- Auspicious Ganesh Header Above Envelope -->
-        <div id="envelopeHeaderBadge" class="relative z-20 text-center mb-6 px-4 transition-opacity duration-500">
-            <span class="inline-block bg-stone-900/90 text-gold-light font-cinzel text-xs sm:text-sm tracking-[0.25em] px-5 py-2 rounded-full border border-gold/60 shadow-xl">
+        <!-- Top Mantra Badge -->
+        <div class="relative z-10 text-center mb-6">
+            <span class="inline-block px-5 py-1.5 rounded-full bg-white/85 border border-gold shadow-md font-deva text-lavender-dark font-bold text-sm sm:text-base tracking-wider">
                 ॥ श्री गणेशाय नमः ॥
             </span>
-            <h2 class="font-playfair font-bold text-2xl sm:text-4xl text-espresso mt-3 drop-shadow-sm">
-                Piyush <span class="text-lavender-deep font-script text-3xl sm:text-5xl mx-1">&amp;</span> Sabhya
+            <h2 class="font-playfair text-2xl sm:text-4xl font-bold text-espresso mt-3 drop-shadow-sm">
+                Piyush <span class="text-lavender font-script text-3xl sm:text-5xl mx-1">&amp;</span> Sabhya
             </h2>
-            <p class="text-xs sm:text-sm font-cinzel tracking-[0.2em] text-espresso/80 uppercase mt-1">
-                Saturday • 21 November 2026
+            <p class="font-cinzel text-xs sm:text-sm tracking-[0.25em] text-espresso/80 uppercase mt-1">
+                Saturday • 21 November 2026 • Gorakhpur
             </p>
         </div>
 
-        <!-- THE INTERACTIVE 3D ROYAL ENVELOPE -->
-        <div class="envelope-scene relative z-20 px-4 w-full max-w-md mx-auto flex flex-col items-center">
-            <div id="envelope3DBox" onclick="openCoolEnvelope()" class="envelope-3d-wrapper relative w-full h-64 sm:h-72 cursor-pointer group">
-                
-                <!-- 1. Envelope Back Wall -->
-                <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-amber-100 to-amber-200 border-2 border-gold shadow-[0_25px_70px_rgba(59,40,24,0.45)]"></div>
+        <!-- Interactive 3D Envelope (Click Anywhere on Envelope to Open & Play at 10s) -->
+        <div id="envelopeBox" onclick="triggerEnvelopeOpen()" class="envelope-wrapper z-10 my-2" role="button" aria-label="Open Wedding Invitation Envelope and Play Song">
+            <!-- Back of Envelope -->
+            <div class="env-back"></div>
 
-                <!-- 2. Rising Inner Illustrated Invitation Card (Slides UP when flap opens!) -->
-                <div class="envelope-rising-card absolute inset-x-4 top-3 bottom-3 bg-gradient-to-b from-cream via-cream-warm to-cream-peach rounded-xl border-2 border-gold shadow-lg p-4 flex flex-col items-center justify-between text-center overflow-hidden">
-                    <div class="w-full flex justify-between items-center text-[10px] font-cinzel text-lavender-deep border-b border-gold/40 pb-1">
-                        <span>[संगीत]</span>
-                        <span class="font-bold tracking-widest">SHUBH VIVAH</span>
-                        <span>21.11.26</span>
-                    </div>
-                    <!-- Mini Couple & Gramophone Preview on Rising Card -->
-                    <div class="my-auto py-1">
-                        <p class="font-deva text-xs text-crimson font-bold">चि० पियूष संग आयु० सभ्या</p>
-                        <h3 class="font-playfair font-bold text-xl sm:text-2xl text-espresso mt-0.5">
-                            Piyush &amp; Sabhya
-                        </h3>
-                        <p class="font-script text-lg sm:text-xl text-lavender-deep">
+            <!-- Inner Rising Illustrated Invitation Card -->
+            <div class="env-card">
+                <span class="text-[10px] sm:text-xs font-cinzel tracking-[0.25em] text-lavender-deep uppercase font-bold">Shubh Vivah</span>
+                <h3 class="font-playfair font-bold text-xl sm:text-3xl text-espresso mt-0.5">Piyush &amp; Sabhya</h3>
+                <p class="font-hindi text-base sm:text-xl text-crimson mt-0.5">चि० पियूष संग आयु० सभ्या</p>
+                <div class="w-16 h-0.5 bg-gold my-1.5"></div>
+                <p class="font-cormorant italic text-xs sm:text-sm text-espresso/90">
+                    Saturday, 21st November 2026 • Prince Lawn
+                </p>
+                <span class="mt-2 inline-flex items-center gap-1.5 text-[10px] font-cinzel text-gold-dark bg-gold/15 px-3 py-0.5 rounded-full border border-gold/40">
+                    <i class="fa-solid fa-music"></i> Song Starts at 0:10
+                </span>
+            </div>
+
+            <!-- Left & Right Envelope Folds -->
+            <div class="env-pocket"></div>
+            <!-- Bottom Envelope Fold -->
+            <div class="env-bottom-fold flex flex-col items-center justify-end pb-3 sm:pb-4">
+                <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] text-gold-light/90 uppercase">
+                    Royal Invitation
+                </span>
+            </div>
+
+            <!-- Top 3D Triangular Flap -->
+            <div class="env-flap"></div>
+
+            <!-- Center Embossed Gold Wax Seal -->
+            <div class="env-wax-seal w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-gold-light via-gold to-gold-dark p-1.5 flex items-center justify-center border-2 border-white/80">
+                <div class="w-full h-full rounded-full bg-gradient-to-b from-crimson to-crimson-deep border border-gold-light flex flex-col items-center justify-center text-center p-1 shadow-inner">
+                    <span class="text-gold-light text-xs leading-none">ॐ</span>
+                    <span class="font-script text-2xl sm:text-3xl text-gold-light leading-none my-0.5">P &amp; S</span>
+                    <span class="text-[8px] sm:text-[9px] font-cinzel tracking-widest text-white uppercase">Tap to Open</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call-To-Action Pill Below Envelope -->
+        <div onclick="triggerEnvelopeOpen()" class="relative z-10 mt-8 cursor-pointer group">
+            <div class="px-7 py-3.5 rounded-full bg-gradient-to-r from-lavender-dark via-lavender-deep to-lavender-dark text-white font-cinzel text-xs sm:text-sm font-bold tracking-[0.18em] uppercase shadow-2xl border-2 border-gold flex items-center gap-3 group-hover:scale-105 transition-transform">
+                <span class="w-7 h-7 rounded-full bg-gold text-espresso flex items-center justify-center animate-bounce">
+                    <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                </span>
+                <span>Click Envelope to Open &amp; Play Song</span>
+            </div>
+            <p class="text-center font-deva text-xs sm:text-sm text-espresso/85 font-semibold mt-2">
+                निमंत्रण खोलने और संगीत चलाने के लिए लिफाफे पर क्लिक करें ✨
+            </p>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         2. TOP-LEFT TRANSLUCENT MEDIA CONTROLS & TOP-RIGHT TOOLS
+            (Matches Floodlightz Reference Screenshot UI!)
+         ================================================================= -->
+    <div class="fixed top-3 left-3 sm:top-5 sm:left-5 z-40 flex items-center gap-2.5">
+        <!-- Play / Pause Circular Glass Button -->
+        <button id="topPlayBtn" onclick="toggleMusicPlayback()" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-stone-900/45 hover:bg-stone-900/70 backdrop-blur-md text-white flex items-center justify-center shadow-lg border border-white/30 transition transform active:scale-95" title="Play / Pause Music">
+            <i id="topPlayIcon" class="fa-solid fa-play text-base sm:text-lg ml-0.5"></i>
+        </button>
+
+        <!-- Mute / Unmute Circular Glass Button -->
+        <button id="topMuteBtn" onclick="toggleMuteAudio()" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-stone-900/45 hover:bg-stone-900/70 backdrop-blur-md text-white flex items-center justify-center shadow-lg border border-white/30 transition transform active:scale-95" title="Mute / Unmute Music">
+            <i id="topMuteIcon" class="fa-solid fa-volume-high text-base sm:text-lg"></i>
+        </button>
+
+        <!-- "[संगीत]" Subtitle Tag from Screenshot -->
+        <div onclick="restartFromTenSeconds()" class="cursor-pointer bg-stone-900/80 hover:bg-stone-900 text-white text-xs sm:text-sm font-deva px-2.5 py-1 rounded shadow-md border border-gold/40 flex items-center gap-1.5" title="Click to replay song from 0:10">
+            <span>[संगीत]</span>
+            <span id="songTimerBadge" class="text-[10px] font-mono text-gold-light hidden sm:inline">0:10</span>
+        </div>
+    </div>
+
+    <!-- Top Right Controls: Language Toggle, Photo Customizer & Video Player Drawer -->
+    <div class="fixed top-3 right-3 sm:top-5 sm:right-5 z-40 flex items-center gap-2">
+        <!-- Bilingual Hindi / English Switcher -->
+        <button onclick="toggleLanguageMode()" class="px-3.5 py-2 rounded-full bg-white/90 hover:bg-white text-espresso font-bold text-xs sm:text-sm shadow-lg border border-gold flex items-center gap-1.5 backdrop-blur-md transition">
+            <i class="fa-solid fa-language text-lavender-deep text-base"></i>
+            <span id="langSwitchLabel" class="font-deva">हिन्दी</span>
+        </button>
+
+        <!-- Custom Couple Photo Uploader Modal Trigger -->
+        <button onclick="togglePhotoModal()" class="px-3.5 py-2 rounded-full bg-lavender-deep/90 hover:bg-lavender-dark text-white font-bold text-xs sm:text-sm shadow-lg border border-gold-light flex items-center gap-1.5 backdrop-blur-md transition" title="Add Couple Photos">
+            <i class="fa-solid fa-camera-retro text-gold-light"></i>
+            <span class="hidden md:inline">Add Photos</span>
+        </button>
+
+        <!-- Three-Dot Menu Button (From Screenshot) to Toggle YouTube Drawer -->
+        <button onclick="toggleYoutubeDrawer()" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-stone-900/45 hover:bg-stone-900/70 backdrop-blur-md text-white flex items-center justify-center shadow-lg border border-white/30 transition" title="Show Song Video Player">
+            <i class="fa-solid fa-ellipsis-vertical text-base sm:text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Expandable YouTube Player Drawer (Hidden by default, keeps iframe active for instant audio) -->
+    <div id="youtubeDrawer" class="fixed bottom-4 right-4 z-40 w-72 sm:w-80 bg-white/95 border-2 border-gold rounded-2xl p-3 shadow-2xl backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+        <div class="flex items-center justify-between pb-2 mb-2 border-b border-gold/30">
+            <span class="font-cinzel text-xs font-bold text-espresso flex items-center gap-1.5">
+                <i class="fa-brands fa-youtube text-red-600 text-base"></i> Wedding Song (Starts @ 0:10)
+            </span>
+            <button onclick="toggleYoutubeDrawer()" class="text-espresso hover:text-crimson text-sm px-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-gold/50">
+            <div id="yt-wedding-player" class="w-full h-full"></div>
+        </div>
+        <div class="mt-2.5 flex items-center justify-between gap-2">
+            <button onclick="restartFromTenSeconds()" class="px-3 py-1 rounded-full bg-lavender-deep text-white text-[11px] font-bold hover:bg-lavender-dark transition">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Replay from 0:10
+            </button>
+            <input type="range" min="0" max="100" value="100" oninput="setMusicVolume(this.value)" class="w-28 accent-lavender-deep cursor-pointer" title="Volume">
+        </div>
+    </div>
+
+    <!-- =================================================================
+         3. COUPLE PHOTO CUSTOMIZER MODAL (Allows user to upload faces/photos!)
+         ================================================================= -->
+    <div id="photoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/65 backdrop-blur-sm p-4">
+        <div class="bg-cream-light border-2 border-gold rounded-3xl max-w-md w-full p-6 shadow-2xl relative text-espresso">
+            <button onclick="togglePhotoModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-lavender/15 text-espresso hover:bg-lavender hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-playfair text-2xl font-bold text-espresso">Personalize Couple Photos</h3>
+            <p class="text-sm text-espresso/80 mt-1">
+                Upload photos of <strong>Piyush</strong> &amp; <strong>Sabhya</strong> to display in the Royal Portrait Frames alongside the watercolor illustrations!
+            </p>
+            <div class="space-y-4 mt-4">
+                <div class="p-3 rounded-xl bg-cream-warm border border-gold/50">
+                    <label class="block text-xs font-cinzel font-bold uppercase text-lavender-dark mb-1">
+                        <i class="fa-solid fa-user-tie mr-1"></i> Groom Photo (Piyush Sharma)
+                    </label>
+                    <input type="file" accept="image/*" onchange="handlePhotoUpload(event, 'groom')" class="text-xs w-full file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-lavender-deep file:text-white hover:file:bg-lavender-dark cursor-pointer">
+                </div>
+                <div class="p-3 rounded-xl bg-cream-warm border border-gold/50">
+                    <label class="block text-xs font-cinzel font-bold uppercase text-lavender-dark mb-1">
+                        <i class="fa-solid fa-crown mr-1"></i> Bride Photo (Sabhya Vishwakarma)
+                    </label>
+                    <input type="file" accept="image/*" onchange="handlePhotoUpload(event, 'bride')" class="text-xs w-full file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-lavender-deep file:text-white hover:file:bg-lavender-dark cursor-pointer">
+                </div>
+            </div>
+            <div class="mt-5 flex justify-end">
+                <button onclick="togglePhotoModal()" class="px-5 py-2 rounded-full bg-gold text-espresso font-cinzel font-bold text-xs uppercase tracking-wider shadow">
+                    Done &amp; View
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+         4. MAIN ILLUSTRATED STAGE CONTAINER (PURPLE CURTAINS & WATERCOLOR VIBE)
+         ================================================================= -->
+    <main class="max-w-4xl mx-auto relative shadow-[0_0_90px_rgba(67,33,71,0.28)] border-x border-gold/40 bg-gradient-to-b from-cream-light via-cream to-cream-warm overflow-hidden">
+
+        <!-- =============================================================
+             HERO SECTION: LAVENDER CURTAINS, FAIRY LIGHTS, DANCING COUPLE & GRAMOPHONES
+             ============================================================= -->
+        <section id="heroStage" class="relative min-h-screen pt-16 sm:pt-20 pb-8 flex flex-col justify-between items-center text-center overflow-hidden">
+
+            <!-- TOP & SIDE LAVENDER/PURPLE WATERCOLOR DRAPED CURTAINS + FAIRY LIGHTS SVG -->
+            <div class="pointer-events-none absolute inset-0 z-10 overflow-hidden">
+                <svg class="w-full h-full" viewBox="0 0 800 1100" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="curtainGradL" x1="0%" y1="0%" x2="100%" y2="20%">
+                            <stop offset="0%" stop-color="#5B3260"/>
+                            <stop offset="45%" stop-color="#8F5D96"/>
+                            <stop offset="80%" stop-color="#B98CBF"/>
+                            <stop offset="100%" stop-color="#74427A"/>
+                        </linearGradient>
+                        <linearGradient id="curtainGradR" x1="100%" y1="0%" x2="0%" y2="20%">
+                            <stop offset="0%" stop-color="#5B3260"/>
+                            <stop offset="45%" stop-color="#8F5D96"/>
+                            <stop offset="80%" stop-color="#B98CBF"/>
+                            <stop offset="100%" stop-color="#74427A"/>
+                        </linearGradient>
+                        <linearGradient id="curtainSwag" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#4A254F"/>
+                            <stop offset="60%" stop-color="#8B5A91"/>
+                            <stop offset="100%" stop-color="#B689BC"/>
+                        </linearGradient>
+                        <filter id="glowBulb" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="blur"/>
+                            <feMerge>
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Left Classical Pillar Base -->
+                    <rect x="0" y="620" width="38" height="480" fill="#EAE6DF" stroke="#C5BEB3" stroke-width="2"/>
+                    <rect x="0" y="610" width="48" height="16" rx="4" fill="#DCD6CC" stroke="#B5AEA2" stroke-width="2"/>
+
+                    <!-- Right Classical Pillar Base -->
+                    <rect x="762" y="620" width="38" height="480" fill="#EAE6DF" stroke="#C5BEB3" stroke-width="2"/>
+                    <rect x="752" y="610" width="48" height="16" rx="4" fill="#DCD6CC" stroke="#B5AEA2" stroke-width="2"/>
+
+                    <!-- Center Top Draped Curtain Valence -->
+                    <path d="M 220,0 Q 400,145 580,0 Z" fill="url(#curtainSwag)" opacity="0.95"/>
+                    <path d="M 260,0 Q 400,105 540,0" fill="none" stroke="#532959" stroke-width="3" opacity="0.6"/>
+                    <path d="M 300,0 Q 400,70 500,0" fill="none" stroke="#D8BFD8" stroke-width="2" opacity="0.6"/>
+
+                    <!-- Left Lavish Purple Draped Curtain -->
+                    <path d="M 0,0 L 310,0 Q 220,140 115,240 Q 65,285 45,320 Q 85,430 60,550 L 35,625 L 0,625 Z" fill="url(#curtainGradL)"/>
+                    <!-- Curtain Fold Lines Left -->
+                    <path d="M 240,0 Q 170,130 60,260" fill="none" stroke="#4A244E" stroke-width="3" opacity="0.55"/>
+                    <path d="M 170,0 Q 115,140 35,295" fill="none" stroke="#E2C6E6" stroke-width="2.5" opacity="0.55"/>
+                    <path d="M 100,0 Q 70,150 20,310" fill="none" stroke="#4A244E" stroke-width="3" opacity="0.5"/>
+                    <!-- Left Tie-Back Sash -->
+                    <rect x="0" y="300" width="62" height="34" rx="12" fill="#DFC9E3" stroke="#7A4980" stroke-width="2"/>
+
+                    <!-- Right Lavish Purple Draped Curtain -->
+                    <path d="M 800,0 L 490,0 Q 580,140 685,240 Q 735,285 755,320 Q 715,430 740,550 L 765,625 L 800,625 Z" fill="url(#curtainGradR)"/>
+                    <!-- Curtain Fold Lines Right -->
+                    <path d="M 560,0 Q 630,130 740,260" fill="none" stroke="#4A244E" stroke-width="3" opacity="0.55"/>
+                    <path d="M 630,0 Q 685,140 765,295" fill="none" stroke="#E2C6E6" stroke-width="2.5" opacity="0.55"/>
+                    <path d="M 700,0 Q 730,150 780,310" fill="none" stroke="#4A244E" stroke-width="3" opacity="0.5"/>
+                    <!-- Right Tie-Back Sash -->
+                    <rect x="738" y="300" width="62" height="34" rx="12" fill="#DFC9E3" stroke="#7A4980" stroke-width="2"/>
+
+                    <!-- Warm Golden Fairy String Lights Across Top Curtains -->
+                    <g filter="url(#glowBulb)" fill="#FFF3B0">
+                        <!-- Left Swag Bulbs -->
+                        <circle class="fairy-bulb-1" cx="25" cy="18" r="5"/>
+                        <circle class="fairy-bulb-2" cx="45" cy="52" r="4.5"/>
+                        <circle class="fairy-bulb-3" cx="72" cy="82" r="5"/>
+                        <circle class="fairy-bulb-1" cx="105" cy="30" r="4.5"/>
+                        <circle class="fairy-bulb-2" cx="135" cy="68" r="5"/>
+                        <circle class="fairy-bulb-3" cx="172" cy="40" r="4.5"/>
+                        <circle class="fairy-bulb-1" cx="215" cy="22" r="5"/>
+                        <circle class="fairy-bulb-2" cx="25" cy="120" r="4.5"/>
+                        <circle class="fairy-bulb-3" cx="55" cy="155" r="5"/>
+                        <!-- Right Swag Bulbs -->
+                        <circle class="fairy-bulb-2" cx="775" cy="18" r="5"/>
+                        <circle class="fairy-bulb-3" cx="755" cy="52" r="4.5"/>
+                        <circle class="fairy-bulb-1" cx="728" cy="82" r="5"/>
+                        <circle class="fairy-bulb-2" cx="695" cy="30" r="4.5"/>
+                        <circle class="fairy-bulb-3" cx="665" cy="68" r="5"/>
+                        <circle class="fairy-bulb-1" cx="628" cy="40" r="4.5"/>
+                        <circle class="fairy-bulb-2" cx="585" cy="22" r="5"/>
+                        <circle class="fairy-bulb-1" cx="775" cy="120" r="4.5"/>
+                        <circle class="fairy-bulb-3" cx="745" cy="155" r="5"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- TOP BLACK & GOLDROYAL CREST plaque (Floodlightz Style Badge) -->
+            <div class="relative z-20 mt-6 sm:mt-10 px-4">
+                <div class="mx-auto inline-flex flex-col items-center justify-center bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 border-2 border-gold/80 rounded-2xl px-7 py-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
+                    <span class="font-deva text-[11px] sm:text-xs text-gold-light tracking-widest">॥ श्री गणेशाय नमः ॥</span>
+                    <span class="font-cinzel text-lg sm:text-2xl font-bold tracking-[0.22em] gold-foil-text mt-0.5">
+                        SHARMA &amp; VISHWAKARMA
+                    </span>
+                    <span class="font-cinzel text-[9px] sm:text-[11px] tracking-[0.45em] text-stone-300 uppercase mt-0.5">
+                        ROYAL WEDDING CELEBRATION
+                    </span>
+                </div>
+
+                <!-- BOLD EDITORIAL SERIF HEADING (Matches "Songs For Sisters..." / "Best Varmala..." Typography) -->
+                <div class="mt-5 sm:mt-7 max-w-xl mx-auto">
+                    <div class="lang-en">
+                        <p class="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-lavender-deep font-bold uppercase">
+                            Saturday • 21st November 2026
+                        </p>
+                        <h1 class="font-playfair font-bold text-4xl sm:text-6xl md:text-7xl text-espresso tracking-tight leading-[1.12] mt-1 drop-shadow-sm">
+                            Piyush <span class="font-script text-lavender-deep font-normal text-5xl sm:text-7xl">&amp;</span> Sabhya
+                        </h1>
+                        <p class="font-playfair font-semibold text-xl sm:text-3xl text-espresso/90 mt-1">
                             Are Getting Married!
                         </p>
                     </div>
-                    <div class="w-full text-[10px] font-cinzel tracking-widest uppercase text-gold-dark border-t border-gold/40 pt-1">
-                        Prince Lawn • Gorakhpur
+
+                    <div class="lang-hi hidden">
+                        <p class="font-deva text-sm sm:text-base text-lavender-deep font-bold">
+                            शनिवार, 21 नवम्बर 2026
+                        </p>
+                        <h1 class="font-hindi text-5xl sm:text-7xl text-crimson leading-tight mt-1">
+                            चि० पियूष <span class="text-lavender-deep text-3xl sm:text-5xl mx-1">संग</span> आयु० सभ्या
+                        </h1>
+                        <p class="font-deva font-bold text-base sm:text-xl text-espresso mt-1">
+                            शुभ विवाह समारोह • गोरखपुर
+                        </p>
                     </div>
                 </div>
 
-                <!-- 3. Envelope Left & Right Side Pocket Flaps -->
-                <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none rounded-2xl overflow-hidden" viewBox="0 0 400 280" preserveAspectRatio="none">
-                    <!-- Left Fold -->
-                    <polygon points="0,0 205,145 0,280" fill="#F6E6C9" stroke="#D4AF37" stroke-width="1.5"/>
-                    <!-- Right Fold -->
-                    <polygon points="400,0 195,145 400,280" fill="#F0DAB6" stroke="#D4AF37" stroke-width="1.5"/>
-                    <!-- Bottom Pocket Fold -->
-                    <polygon points="0,280 200,130 400,280" fill="#FDF3DF" stroke="#D4AF37" stroke-width="2"/>
-                </svg>
-
-                <!-- 4. Envelope Top 3D Opening Flap -->
-                <div class="envelope-flap absolute top-0 inset-x-0 h-40 pointer-events-none">
-                    <svg class="w-full h-full drop-shadow-md" viewBox="0 0 400 165" preserveAspectRatio="none">
-                        <defs>
-                            <linearGradient id="flapGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#FFFDF7"/>
-                                <stop offset="100%" stop-color="#EAD0A8"/>
-                            </linearGradient>
-                        </defs>
-                        <polygon points="0,0 200,160 400,0" fill="url(#flapGrad)" stroke="#D4AF37" stroke-width="2.5"/>
-                        <!-- Ornate Inner Gold Trim on Flap -->
-                        <polygon points="18,6 200,146 382,6" fill="none" stroke="#B38728" stroke-width="1" stroke-dasharray="4 3"/>
-                    </svg>
-                </div>
-
-                <!-- 5. Shockwave Ring -->
-                <div class="seal-shockwave absolute top-[54%] left-1/2 w-28 h-28 rounded-full border-4 border-gold z-40"></div>
-
-                <!-- 6. Center Glowing 3D Golden Wax Seal Button -->
-                <div class="wax-seal-3d absolute top-[54%] left-1/2 z-40 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-gold-light via-gold to-gold-dark p-1.5 flex items-center justify-center border-2 border-cream shadow-2xl">
-                    <div class="w-full h-full rounded-full bg-gradient-to-b from-crimson to-crimson-deep border-2 border-gold-light flex flex-col items-center justify-center text-center p-2 shadow-inner">
-                        <span class="text-gold-light text-xs leading-none">ॐ</span>
-                        <span class="font-script text-2xl sm:text-3xl gold-foil-text leading-none my-0.5">P &amp; S</span>
-                        <span class="text-[8px] font-cinzel tracking-widest text-gold-light uppercase">Tap to Open</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Pulsing Call-To-Action Below Envelope -->
-            <div id="envelopePrompt" onclick="openCoolEnvelope()" class="mt-7 cursor-pointer bg-stone-900/95 hover:bg-lavender-deep text-cream border-2 border-gold px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 hover:scale-105">
-                <span class="w-7 h-7 rounded-full bg-gold text-stone-900 flex items-center justify-center text-xs">
-                    <i class="fa-solid fa-play ml-0.5"></i>
-                </span>
-                <div class="text-left">
-                    <p class="font-cinzel text-xs sm:text-sm font-bold tracking-wider text-gold-light uppercase">
-                        Tap Envelope to Open &amp; Start Music
-                    </p>
-                    <p class="font-deva text-[11px] text-cream/80">
-                        निमंत्रण खोलने और संगीत शुरू करने के लिए लिफाफे पर क्लिक करें
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =====================================================================
-         3. FLOATING TOP BAR (Pose Switcher, Custom Couple Photo Uploader, Replay Envelope & Hindi Toggle)
-         ===================================================================== -->
-    <header class="fixed top-0 left-0 right-0 z-40 px-2 sm:px-6 py-2.5">
-        <div class="max-w-5xl mx-auto bg-stone-900/90 backdrop-blur-md border border-gold/60 rounded-full px-3 sm:px-5 py-2 flex items-center justify-between shadow-xl text-cream">
-            
-            <!-- Left: Floodlightz Style Emblem -->
-            <a href="#stage-hero" class="flex items-center gap-2">
-                <span class="bg-gold text-stone-900 font-playfair font-extrabold text-xs sm:text-sm px-2.5 py-1 rounded-full">
-                    P &hearts; S
-                </span>
-                <span class="font-cinzel text-xs tracking-widest text-gold-light hidden md:inline-block">
-                    21 NOV 2026
-                </span>
-            </a>
-
-            <!-- Center Quick Navigation -->
-            <nav class="hidden lg:flex items-center gap-5 text-xs font-cinzel tracking-widest uppercase text-cream/90">
-                <a href="#stage-hero" class="hover:text-gold-light transition">Stage</a>
-                <a href="#couple-details" class="hover:text-gold-light transition">Couple</a>
-                <a href="#events" class="hover:text-gold-light transition">Events</a>
-                <a href="#entrypass" class="hover:text-gold-light transition">Entry Card</a>
-                <a href="#venue" class="hover:text-gold-light transition">Venue</a>
-            </nav>
-
-            <!-- Right Interactive Controls -->
-            <div class="flex items-center gap-1.5 sm:gap-2">
-                <!-- Replay Envelope Animation Button -->
-                <button onclick="replayEnvelopeOpening()" class="bg-lavender-deep/90 hover:bg-lavender text-cream text-[11px] font-cinzel px-2.5 sm:px-3 py-1.5 rounded-full border border-gold/50 transition flex items-center gap-1.5" title="Replay 3D Envelope Opening">
-                    <i class="fa-solid fa-envelope-open-text text-gold-light"></i>
-                    <span class="hidden sm:inline">Replay Envelope</span>
-                </button>
-
-                <!-- Upload Custom Couple Photos Modal Trigger -->
-                <button onclick="togglePhotoModal()" class="bg-amber-700/90 hover:bg-amber-600 text-cream text-[11px] font-cinzel px-2.5 sm:px-3 py-1.5 rounded-full border border-gold/50 transition flex items-center gap-1.5" title="Add Your Own Couple Photos">
-                    <i class="fa-solid fa-camera-retro text-gold-light"></i>
-                    <span class="hidden sm:inline">Couple Photo</span>
-                </button>
-
-                <!-- Hindi / English Switcher -->
-                <button onclick="toggleLanguage()" class="bg-gradient-to-r from-gold-light via-gold to-gold-dark text-stone-900 font-bold text-xs px-3 py-1.5 rounded-full shadow hover:brightness-110 transition flex items-center gap-1">
-                    <i class="fa-solid fa-language"></i>
-                    <span id="langToggleText" class="font-deva">हिन्दी</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- =====================================================================
-         4. CUSTOM COUPLE PHOTO UPLOADER MODAL (For Adding Both Members' Photos)
-         ===================================================================== -->
-    <div id="photoUploadModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-cream-warm border-2 border-gold rounded-3xl max-w-md w-full p-6 shadow-2xl text-espresso relative">
-            <button onclick="togglePhotoModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-900 text-gold-light flex items-center justify-center hover:scale-105 transition">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="text-center mb-4">
-                <span class="px-3 py-1 rounded-full bg-lavender/20 text-lavender-deep font-cinzel text-xs font-bold uppercase tracking-widest">
-                    Personalize Stage
-                </span>
-                <h3 class="font-playfair font-bold text-2xl text-espresso mt-1">
-                    Couple Stage Illustration &amp; Photos
-                </h3>
-                <p class="text-xs text-espresso/80 mt-1">
-                    Switch between the built-in Floodlightz dancing illustrations or upload photos of Piyush &amp; Sabhya!
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Built-in Pose Presets -->
-                <div class="grid grid-cols-2 gap-2.5">
-                    <button onclick="setCouplePose('sangeet'); togglePhotoModal();" class="p-3 rounded-xl border-2 border-lavender bg-lavender/10 hover:bg-lavender/20 text-center transition">
-                        <div class="text-lg">💃🕺</div>
-                        <div class="font-playfair font-bold text-xs text-espresso mt-1">Pose 1: Sangeet Dance</div>
-                        <div class="text-[10px] text-espresso/70">(Black Sherwani &amp; Silver Gown)</div>
+                <!-- Interactive Controls to Switch Between Sangeet Dance & Varmala Look + Dance Boost -->
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-2.5 relative z-30">
+                    <button id="sceneBtnSangeet" onclick="switchCoupleScene('sangeet')" class="px-4 py-1.5 rounded-full bg-lavender-deep text-white font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition">
+                        💃 Sangeet Dance Look
                     </button>
-                    <button onclick="setCouplePose('varmala'); togglePhotoModal();" class="p-3 rounded-xl border-2 border-gold bg-gold/15 hover:bg-gold/25 text-center transition">
-                        <div class="text-lg">👑✨</div>
-                        <div class="font-playfair font-bold text-xs text-espresso mt-1">Pose 2: Golden Varmala</div>
-                        <div class="text-[10px] text-espresso/70">(Royal Cream &amp; Gold Lehenga)</div>
+                    <button id="sceneBtnVarmala" onclick="switchCoupleScene('varmala')" class="px-4 py-1.5 rounded-full bg-white/90 text-espresso hover:bg-gold/20 font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition">
+                        👑 Royal Varmala Look
+                    </button>
+                    <button onclick="boostCoupleDance()" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-antique text-espresso font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md hover:scale-105 transition">
+                        🎉 Make Them Dance!
                     </button>
                 </div>
+            </div>
 
-                <div class="relative flex py-1 items-center">
-                    <div class="flex-grow border-t border-gold/40"></div>
-                    <span class="flex-shrink mx-3 text-xs font-cinzel text-espresso/60 uppercase">OR Upload Photos</span>
-                    <div class="flex-grow border-t border-gold/40"></div>
-                </div>
-
-                <!-- Upload Single Together Photo or Individual Member Photos -->
-                <div class="space-y-3 bg-white/80 p-3.5 rounded-2xl border border-gold/50">
-                    <div>
-                        <label class="block text-xs font-bold text-espresso mb-1">
-                            1. Upload Couple Photo Together (Or Illustrated Portrait):
-                        </label>
-                        <input type="file" accept="image/*" onchange="handleCouplePhotoUpload(event, 'together')" class="w-full text-xs text-espresso file:mr-3 file:py-1.5 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-lavender-deep file:text-white hover:file:bg-lavender cursor-pointer"/>
+            <!-- Optional User-Uploaded Couple Portrait Badges (Hidden until user uploads photos) -->
+            <div id="customPhotosStrip" class="hidden relative z-20 mt-4 flex items-center justify-center gap-6">
+                <div class="text-center">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-gold shadow-xl overflow-hidden bg-white mx-auto">
+                        <img id="groomUploadedImg" src="https://placehold.co/200x200/683A6C/FFFDF9?text=Piyush" alt="Piyush" class="w-full h-full object-cover">
                     </div>
-
-                    <div class="grid grid-cols-2 gap-2 pt-2 border-t border-gold/30">
-                        <div>
-                            <label class="block text-[11px] font-bold text-espresso mb-1">
-                                Groom (Piyush):
-                            </label>
-                            <input type="file" accept="image/*" onchange="handleCouplePhotoUpload(event, 'groom')" class="w-full text-[10px] text-espresso file:py-1 file:px-2.5 file:rounded-full file:border-0 file:bg-stone-800 file:text-gold-light cursor-pointer"/>
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-espresso mb-1">
-                                Bride (Sabhya):
-                            </label>
-                            <input type="file" accept="image/*" onchange="handleCouplePhotoUpload(event, 'bride')" class="w-full text-[10px] text-espresso file:py-1 file:px-2.5 file:rounded-full file:border-0 file:bg-crimson file:text-gold-light cursor-pointer"/>
-                        </div>
+                    <span class="text-xs font-bold text-espresso mt-1 block">Piyush</span>
+                </div>
+                <div class="text-2xl text-crimson animate-bounce">❤️</div>
+                <div class="text-center">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-4 border-gold shadow-xl overflow-hidden bg-white mx-auto">
+                        <img id="brideUploadedImg" src="https://placehold.co/200x200/D4AF37/3A2615?text=Sabhya" alt="Sabhya" class="w-full h-full object-cover">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- =====================================================================
-         5. FLOATING GRAMOPHONE & YOUTUBE MUSIC CONTROLLER (Starts at 0:10)
-         ===================================================================== -->
-    <div class="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
-        <!-- Expandable YouTube Video Drawer -->
-        <div id="videoDrawer" class="hidden bg-stone-900/95 border-2 border-gold rounded-2xl p-3 shadow-2xl backdrop-blur-md w-72 sm:w-80 text-cream transition-all">
-            <div class="flex justify-between items-center mb-2 pb-1 border-b border-gold/30">
-                <span class="text-xs font-cinzel text-gold-light tracking-wider flex items-center gap-1.5">
-                    <i class="fa-brands fa-youtube text-red-500"></i> Wedding Song (Starts @ 0:10)
-                </span>
-                <button onclick="toggleVideoDrawer()" class="text-gold-light hover:text-white text-xs px-1.5">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-gold/40 bg-black">
-                <div id="youtube-player" class="w-full h-full"></div>
-            </div>
-            <div class="mt-2 flex items-center justify-between gap-2 text-xs text-gold-light">
-                <button onclick="restartFromTenSeconds()" class="px-2.5 py-1 rounded bg-gold/20 border border-gold text-[10px] hover:bg-gold hover:text-stone-900 transition font-bold shrink-0">
-                    <i class="fa-solid fa-rotate-left mr-1"></i>Replay 0:10
-                </button>
-                <input id="volumeSlider" type="range" min="0" max="100" value="100" oninput="changeVolume(this.value)" class="w-full accent-gold cursor-pointer h-1.5 bg-stone-700 rounded-lg">
-            </div>
-        </div>
-
-        <!-- Floating Vinyl Music Pill -->
-        <div class="flex items-center gap-2 bg-stone-900/95 border-2 border-gold rounded-full p-1.5 pr-3.5 shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md text-cream">
-            <button onclick="toggleMusic()" class="relative w-11 h-11 rounded-full bg-gradient-to-tr from-stone-950 via-stone-800 to-stone-950 border-2 border-gold flex items-center justify-center shadow-inner group" title="Play / Pause Wedding Song">
-                <div id="vinylDisc" class="w-full h-full rounded-full border border-gold/30 flex items-center justify-center vinyl-spin vinyl-paused">
-                    <div class="w-4 h-4 rounded-full bg-gold flex items-center justify-center">
-                        <div class="w-1.5 h-1.5 rounded-full bg-stone-900"></div>
-                    </div>
-                </div>
-                <div class="absolute inset-0 flex items-center justify-center bg-black/30 rounded-full group-hover:bg-black/50 transition">
-                    <i id="musicStateIcon" class="fa-solid fa-play text-gold-light text-xs"></i>
-                </div>
-            </button>
-
-            <div class="flex items-center gap-2 cursor-pointer" onclick="toggleMusic()">
-                <div id="eqContainer" class="flex items-end gap-0.5 h-4 opacity-40">
-                    <span class="w-1 bg-gold rounded-full eq-bar-1"></span>
-                    <span class="w-1 bg-lavender-light rounded-full eq-bar-2"></span>
-                    <span class="w-1 bg-marigold rounded-full eq-bar-3"></span>
-                    <span class="w-1 bg-gold rounded-full eq-bar-4"></span>
-                </div>
-                <div class="text-left">
-                    <p id="musicStatusLabel" class="text-[11px] font-cinzel font-bold text-gold-light leading-tight">Play Song</p>
-                    <p class="text-[9px] text-cream/75 leading-tight">[संगीत] • From 0:10</p>
+                    <span class="text-xs font-bold text-espresso mt-1 block">Sabhya</span>
                 </div>
             </div>
 
-            <button onclick="restartFromTenSeconds()" class="text-gold-light/80 hover:text-gold-bright text-[10px] font-bold px-2 py-1 rounded-full bg-white/10 hover:bg-white/20 transition" title="Jump to 0:10">
-                0:10
-            </button>
+            <!-- =========================================================
+                 CENTER ILLUSTRATED STAGE: DANCING COUPLE, PALMS, BALUSTRADE & GRAMOPHONES
+                 ========================================================= -->
+            <div class="relative w-full max-w-3xl mx-auto mt-2 sm:mt-4 pt-4 px-2 flex flex-col items-center justify-end z-20">
 
-            <button onclick="toggleVideoDrawer()" class="text-gold/80 hover:text-gold-bright text-xs p-1.5 rounded-full hover:bg-white/10 transition" title="Show/Hide Video Player">
-                <i class="fa-solid fa-tv"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- =====================================================================
-         MAIN FLOODLIGHTZ ILLUSTRATED STAGE CONTAINER
-         ===================================================================== -->
-    <main class="max-w-4xl mx-auto relative z-10 shadow-[0_0_90px_rgba(59,40,24,0.35)] border-x-2 sm:border-x-4 border-gold/60 watercolor-stage overflow-hidden">
-
-        <!-- =================================================================
-             SECTION 1: FLOODLIGHTZ STAGE HERO (Lavender Curtains, Fairy Lights,
-                        Gramophones, Marble Terrace & Dancing Couple Enjoying!)
-             ================================================================= -->
-        <section id="stage-hero" class="relative min-h-screen pt-16 pb-8 flex flex-col justify-between items-center text-center overflow-hidden">
-
-            <!-- 1. DRAPED LAVENDER / PURPLE WATERCOLOR STAGE CURTAINS (Left, Right & Top Valance) -->
-            <div class="pointer-events-none absolute inset-0 z-10 overflow-hidden">
-                <!-- Top Scalloped Lavender Valance & Side Drapes SVG -->
-                <svg class="w-full h-full" viewBox="0 0 800 1000" preserveAspectRatio="none">
+                <!-- Background Tropical Palm & Banana Leaves + Palace Balustrade Railing SVG -->
+                <svg class="w-full h-auto max-h-[540px] overflow-visible" viewBox="0 0 800 560">
                     <defs>
-                        <linearGradient id="purpleDrapeLeft" x1="0%" y1="0%" x2="100%" y2="20%">
-                            <stop offset="0%" stop-color="#5B3260"/>
-                            <stop offset="45%" stop-color="#8A5690"/>
-                            <stop offset="85%" stop-color="#B98CBF"/>
-                            <stop offset="100%" stop-color="#D9C2E9" stop-opacity="0.1"/>
+                        <!-- Shimmering Gown & Lehenga Gradients -->
+                        <linearGradient id="silverGoldGown" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F7EFE1"/>
+                            <stop offset="35%" stop-color="#DECBA8"/>
+                            <stop offset="70%" stop-color="#B89F74"/>
+                            <stop offset="100%" stop-color="#EAE0CE"/>
                         </linearGradient>
-                        <linearGradient id="purpleDrapeRight" x1="100%" y1="0%" x2="0%" y2="20%">
-                            <stop offset="0%" stop-color="#5B3260"/>
-                            <stop offset="45%" stop-color="#8A5690"/>
-                            <stop offset="85%" stop-color="#B98CBF"/>
-                            <stop offset="100%" stop-color="#D9C2E9" stop-opacity="0.1"/>
+                        <linearGradient id="royalGoldLehenga" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFE89E"/>
+                            <stop offset="45%" stop-color="#E5B646"/>
+                            <stop offset="80%" stop-color="#C99222"/>
+                            <stop offset="100%" stop-color="#FCE08B"/>
                         </linearGradient>
-                        <linearGradient id="topValanceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#4A254F"/>
-                            <stop offset="60%" stop-color="#8A5690"/>
-                            <stop offset="100%" stop-color="#B98CBF"/>
+                        <linearGradient id="creamSherwani" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF5E1"/>
+                            <stop offset="50%" stop-color="#F3D6A4"/>
+                            <stop offset="100%" stop-color="#DFB97C"/>
+                        </linearGradient>
+                        <linearGradient id="gramophoneBrass" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF0B8"/>
+                            <stop offset="40%" stop-color="#D4AF37"/>
+                            <stop offset="80%" stop-color="#8A6214"/>
+                            <stop offset="100%" stop-color="#F5DC8B"/>
                         </linearGradient>
                     </defs>
 
-                    <!-- Left Flowing Lavender Curtain with Tie-Back -->
-                    <path d="M0,0 L280,0 C240,120 150,240 85,370 C115,470 75,580 35,680 L0,680 Z" fill="url(#purpleDrapeLeft)"/>
-                    <!-- Left Curtain Fold Lines -->
-                    <path d="M40,0 C35,140 25,250 55,370 M110,0 C95,140 55,260 75,370 M180,0 C150,120 90,230 85,370" stroke="#4A254F" stroke-width="1.5" fill="none" opacity="0.35"/>
-                    <!-- Left Ribbon Tie-Back -->
-                    <rect x="0" y="355" width="92" height="24" rx="12" fill="#E6D7EE" stroke="#9B6B9E" stroke-width="1.5"/>
+                    <!-- Lush Tropical Leaves Left (Matches Varmala Screenshot) -->
+                    <g opacity="0.88">
+                        <path d="M 110,430 Q 45,330 15,260 Q 75,280 125,380 Z" fill="#639675" stroke="#3E6B4E" stroke-width="1.5"/>
+                        <path d="M 130,430 Q 85,305 65,220 Q 125,265 150,385 Z" fill="#7AB08A" stroke="#3E6B4E" stroke-width="1.5"/>
+                        <path d="M 95,435 Q 25,375 -5,345 Q 55,345 110,400 Z" fill="#518061"/>
+                        <path d="M 165,435 Q 195,350 235,310 Q 210,375 180,435 Z" fill="#88B896"/>
+                    </g>
 
-                    <!-- Right Flowing Lavender Curtain with Tie-Back -->
-                    <path d="M800,0 L520,0 C560,120 650,240 715,370 C685,470 725,580 765,680 L800,680 Z" fill="url(#purpleDrapeRight)"/>
-                    <!-- Right Curtain Fold Lines -->
-                    <path d="M760,0 C765,140 775,250 745,370 M690,0 C705,140 745,260 725,370 M620,0 C650,120 710,230 715,370" stroke="#4A254F" stroke-width="1.5" fill="none" opacity="0.35"/>
-                    <!-- Right Ribbon Tie-Back -->
-                    <rect x="708" y="355" width="92" height="24" rx="12" fill="#E6D7EE" stroke="#9B6B9E" stroke-width="1.5"/>
+                    <!-- Lush Tropical Palm Leaves Right -->
+                    <g opacity="0.88">
+                        <path d="M 690,430 Q 755,330 785,260 Q 725,280 675,380 Z" fill="#639675" stroke="#3E6B4E" stroke-width="1.5"/>
+                        <path d="M 670,430 Q 715,305 735,220 Q 675,265 650,385 Z" fill="#7AB08A" stroke="#3E6B4E" stroke-width="1.5"/>
+                        <path d="M 705,435 Q 775,375 805,345 Q 745,345 690,400 Z" fill="#518061"/>
+                        <path d="M 635,435 Q 605,350 565,310 Q 590,375 620,435 Z" fill="#88B896"/>
+                    </g>
 
-                    <!-- Center Top Draped Swag Valance -->
-                    <path d="M180,0 Q400,145 620,0 Z" fill="url(#topValanceGrad)" opacity="0.92"/>
-                    <path d="M230,0 Q400,105 570,0" fill="none" stroke="#D9C2E9" stroke-width="2" opacity="0.5"/>
+                    <!-- White Classical Palace Balustrade Railing Across Stage -->
+                    <g>
+                        <!-- Top Rail -->
+                        <rect x="20" y="425" width="760" height="14" rx="4" fill="#F4F1EA" stroke="#C7C0B3" stroke-width="2"/>
+                        <!-- Bottom Rail -->
+                        <rect x="20" y="505" width="760" height="16" rx="4" fill="#E6E1D6" stroke="#C7C0B3" stroke-width="2"/>
+                        <!-- Baluster Pillars -->
+                        <g fill="#F4F1EA" stroke="#C7C0B3" stroke-width="1.5">
+                            <rect x="55" y="439" width="14" height="66" rx="5"/>
+                            <rect x="105" y="439" width="14" height="66" rx="5"/>
+                            <rect x="155" y="439" width="14" height="66" rx="5"/>
+                            <rect x="205" y="439" width="14" height="66" rx="5"/>
+                            <rect x="255" y="439" width="14" height="66" rx="5"/>
+                            <rect x="535" y="439" width="14" height="66" rx="5"/>
+                            <rect x="585" y="439" width="14" height="66" rx="5"/>
+                            <rect x="635" y="439" width="14" height="66" rx="5"/>
+                            <rect x="685" y="439" width="14" height="66" rx="5"/>
+                            <rect x="735" y="439" width="14" height="66" rx="5"/>
+                        </g>
+                        <!-- Warm Marble Stage Floor -->
+                        <polygon points="0,520 800,520 800,560 0,560" fill="#F2DEC1" stroke="#D9BE96" stroke-width="2"/>
+                    </g>
+
+                    <!-- =========================================================
+                         SCENE 1: SANGEET PARTY DANCE ILLUSTRATION (Image 1 Vibe)
+                         Groom in Black Sherwani Jumping/Dancing + Bride in Shimmering Gown Twirling
+                         ========================================================= -->
+                    <g id="coupleSceneSangeet" class="couple-dancing">
+                        
+                        <!-- GROOM (Piyush in Sleek Black Sherwani Dancing Energetically) -->
+                        <g transform="translate(390, 65)">
+                            <!-- Groom Dancing Legs (One Leg Joyfully Kicked Up!) -->
+                            <path d="M 48,275 L 82,385 L 102,380 L 74,270 Z" fill="#18181B" stroke="#000" stroke-width="2"/>
+                            <!-- Raised Dancing Leg -->
+                            <path d="M 82,270 L 128,320 L 105,355 L 88,342 L 102,320 L 62,275 Z" fill="#1E1E22" stroke="#000" stroke-width="2"/>
+                            <!-- Groom Shiny Black Shoes -->
+                            <ellipse cx="98" cy="390" rx="18" ry="9" transform="rotate(-15 98 390)" fill="#111" stroke="#D4AF37" stroke-width="1.5"/>
+                            <ellipse cx="92" cy="355" rx="16" ry="8" transform="rotate(65 92 355)" fill="#111" stroke="#D4AF37" stroke-width="1.5"/>
+
+                            <!-- Groom Left Waving Arm (Raised High Celebrating) -->
+                            <g class="groom-arm-wave">
+                                <path d="M 95,95 Q 145,75 168,35 L 185,48 Q 160,98 102,122 Z" fill="#1C1917" stroke="#000" stroke-width="2"/>
+                                <!-- Groom Waving Hand -->
+                                <path d="M 168,35 C 165,15 188,12 192,28 C 198,38 188,48 182,46 Z" fill="#F3C6A5" stroke="#8D5B3C" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- Groom Right Arm Holding Bride's Hand -->
+                            <path d="M 22,102 Q -10,130 -25,148 L -12,162 Q 12,145 32,124 Z" fill="#1C1917" stroke="#000" stroke-width="2"/>
+
+                            <!-- Black Royal Sherwani Coat (Flared Dancing Cut) -->
+                            <path d="M 22,90 L 98,86 L 105,195 L 132,300 L 12,310 L 26,195 Z" fill="#1C1917" stroke="#09090B" stroke-width="2.5"/>
+                            <!-- Gold Buttons & Pocket Brooch on Black Sherwani -->
+                            <line x1="60" y1="90" x2="68" y2="295" stroke="#D4AF37" stroke-width="1.8"/>
+                            <circle cx="60" cy="108" r="3" fill="#D4AF37"/>
+                            <circle cx="61" cy="128" r="3" fill="#D4AF37"/>
+                            <circle cx="62" cy="148" r="3" fill="#D4AF37"/>
+                            <circle cx="63" cy="168" r="3" fill="#D4AF37"/>
+                            <circle cx="64" cy="188" r="3" fill="#D4AF37"/>
+                            <circle cx="65" cy="208" r="3" fill="#D4AF37"/>
+                            <!-- Golden Pocket Square & Chain Brooch -->
+                            <rect x="34" y="128" width="16" height="20" rx="2" fill="none" stroke="#D4AF37" stroke-width="1.8"/>
+                            <path d="M 36,128 L 42,118 L 48,128 Z" fill="#D4AF37"/>
+
+                            <!-- Groom Neck & Faceless Stylized Bearded Head (Exact Reference 1 Look) -->
+                            <rect x="47" y="68" width="22" height="24" rx="8" fill="#F3C6A5" stroke="#8D5B3C" stroke-width="1.5"/>
+                            <!-- Bandhgala Collar -->
+                            <path d="M 42,88 Q 58,98 76,86 L 73,76 Q 58,86 45,78 Z" fill="#111" stroke="#D4AF37" stroke-width="1.5"/>
+                            <!-- Head Shape -->
+                            <path d="M 32,30 C 32,12 80,10 82,30 C 85,55 78,76 58,78 C 38,78 32,55 32,30 Z" fill="#F3C6A5" stroke="#8D5B3C" stroke-width="1.5"/>
+                            <!-- Stylish Quiff Hair -->
+                            <path d="M 30,36 C 24,18 38,4 62,6 C 82,6 88,20 83,36 C 80,24 72,18 56,18 C 40,18 34,26 30,36 Z" fill="#18181B"/>
+                            <!-- Groom Beard & Joyful Smile -->
+                            <path d="M 34,48 C 35,66 44,78 58,78 C 72,78 80,66 81,48 C 76,58 70,62 58,62 C 46,62 40,58 34,48 Z" fill="#27272A"/>
+                            <!-- Happy White Smile -->
+                            <path d="M 48,62 Q 58,70 68,62 Z" fill="#FFF"/>
+                        </g>
+
+                        <!-- BRIDE (Sabhya in Shimmering Champagne-Silver Ball Gown Twirling & Celebrating) -->
+                        <g transform="translate(215, 110)">
+                            <!-- Bride Right Raised Dancing Arm -->
+                            <g class="bride-arm-sway">
+                                <path d="M 92,92 Q 48,62 18,28 L 26,20 Q 62,52 102,82 Z" fill="#F5CBA7" stroke="#9C6B49" stroke-width="1.5"/>
+                            </g>
+                            <!-- Bride Left Arm Holding Groom -->
+                            <path d="M 142,92 Q 168,112 188,116 L 184,126 Q 158,122 135,104 Z" fill="#F5CBA7" stroke="#9C6B49" stroke-width="1.5"/>
+
+                            <!-- Voluminous Sparkling Champagne-Silver Ball Gown Skirt -->
+                            <path d="M 95,138 L 142,138 Q 195,245 232,365 Q 118,388 2,365 Q 45,245 95,138 Z" fill="url(#silverGoldGown)" stroke="#786242" stroke-width="2"/>
+                            <!-- Pleats & Sparkle Lines on Gown -->
+                            <path d="M 105,138 L 45,368" stroke="#8C734B" stroke-width="1.5" opacity="0.65"/>
+                            <path d="M 115,138 L 95,374" stroke="#FFF" stroke-width="2" opacity="0.75"/>
+                            <path d="M 122,138 L 145,374" stroke="#8C734B" stroke-width="1.5" opacity="0.65"/>
+                            <path d="M 132,138 L 192,368" stroke="#FFF" stroke-width="2" opacity="0.75"/>
+
+                            <!-- Gown Bodice & Waist Belt -->
+                            <path d="M 92,88 L 144,88 L 140,138 L 96,138 Z" fill="url(#silverGoldGown)" stroke="#786242" stroke-width="2"/>
+                            <rect x="95" y="133" width="46" height="7" rx="3" fill="#FFF8E7" stroke="#786242" stroke-width="1.5"/>
+
+                            <!-- Bride Neck & Faceless Head with Flowing Wavy Hair -->
+                            <rect x="111" y="64" width="16" height="24" rx="6" fill="#F5CBA7"/>
+                            <!-- Back Flowing Hair -->
+                            <path d="M 85,35 C 72,68 78,115 92,132 C 115,118 128,118 152,130 C 164,108 162,65 148,35 Z" fill="#1F1614"/>
+                            <!-- Bride Faceless Head -->
+                            <ellipse cx="119" cy="46" rx="20" ry="25" fill="#F5CBA7" stroke="#9C6B49" stroke-width="1.5"/>
+                            <!-- Front Wavy Hair Framing Face -->
+                            <path d="M 98,38 C 98,15 140,15 140,38 C 146,58 152,85 138,105 C 135,82 138,55 122,30 C 106,55 104,82 98,105 C 88,85 94,58 98,38 Z" fill="#1F1614"/>
+                        </g>
+                    </g>
+
+                    <!-- =========================================================
+                         SCENE 2: ROYAL VARMALA WEDDING LOOK (Image 2 + Generated Illustration Vibe)
+                         Groom in Cream Sherwani + Emerald Necklace & Bride in Golden Lehenga Dancing Together
+                         ========================================================= -->
+                    <g id="coupleSceneVarmala" class="couple-dancing hidden">
+                        <!-- GROOM (Cream & Gold Royal Sherwani with Emerald Haar & Raised Arm) -->
+                        <g transform="translate(245, 55)">
+                            <!-- Groom Legs (Churidar & Golden Mojari) -->
+                            <rect x="42" y="310" width="24" height="82" rx="8" fill="#F5E1BE" stroke="#A68246" stroke-width="1.8"/>
+                            <rect x="86" y="310" width="24" height="82" rx="8" fill="#F5E1BE" stroke="#A68246" stroke-width="1.8"/>
+                            <ellipse cx="50" cy="398" rx="18" ry="9" fill="#E5B85B" stroke="#8C6214" stroke-width="2"/>
+                            <ellipse cx="98" cy="398" rx="18" ry="9" fill="#E5B85B" stroke="#8C6214" stroke-width="2"/>
+
+                            <!-- Groom Left Arm Raised Twirling Bride -->
+                            <g class="groom-arm-wave">
+                                <path d="M 105,98 Q 165,68 205,22 L 220,36 Q 178,90 112,125 Z" fill="url(#creamSherwani)" stroke="#A68246" stroke-width="2"/>
+                                <circle cx="215" cy="26" r="12" fill="#F3C6A5" stroke="#8D5B3C" stroke-width="1.5"/>
+                            </g>
+
+                            <!-- Groom Sherwani Tunic -->
+                            <path d="M 24,92 L 116,92 L 126,320 L 18,320 Z" fill="url(#creamSherwani)" stroke="#A68246" stroke-width="2.2"/>
+                            <!-- Royal Peach Stole (Dupatta) Draped Over Arm -->
+                            <path d="M 26,94 L 54,94 L 62,345 L 22,345 Z" fill="#F7C59F" stroke="#C88A5B" stroke-width="1.8"/>
+
+                            <!-- Multi-strand Royal Emerald Beaded Necklace (Kundan Haar) -->
+                            <path d="M 46,92 Q 72,155 96,92" fill="none" stroke="#15803D" stroke-width="3.5" stroke-dasharray="4 3"/>
+                            <path d="M 42,94 Q 72,175 100,94" fill="none" stroke="#166534" stroke-width="3.5" stroke-dasharray="4 3"/>
+                            <path d="M 38,96 Q 72,195 104,96" fill="none" stroke="#14532D" stroke-width="3.5" stroke-dasharray="4 3"/>
+
+                            <!-- Groom Head & Smiling Beard -->
+                            <rect x="58" y="68" width="24" height="24" rx="6" fill="#F3C6A5"/>
+                            <path d="M 44,30 C 44,10 96,10 96,30 C 98,56 90,76 70,78 C 50,76 42,56 44,30 Z" fill="#F3C6A5" stroke="#8D5B3C" stroke-width="1.5"/>
+                            <path d="M 42,35 C 36,14 54,2 75,4 C 96,6 102,20 96,35 C 90,22 82,18 68,18 C 54,18 46,24 42,35 Z" fill="#1C1917"/>
+                            <path d="M 46,48 C 48,66 56,78 70,78 C 84,78 92,66 94,48 C 88,58 80,62 70,62 C 60,62 52,58 46,48 Z" fill="#27272A"/>
+                            <path d="M 60,62 Q 70,70 80,62 Z" fill="#FFF"/>
+                        </g>
+
+                        <!-- BRIDE (Golden Embroidered Royal Lehenga Twirling Under Groom's Hand) -->
+                        <g transform="translate(355, 100)">
+                            <!-- Bride Left Arm Raised Meeting Groom's Hand -->
+                            <g class="bride-arm-sway">
+                                <path d="M 122,90 Q 155,48 112,-15 L 98,-6 Q 135,48 108,85 Z" fill="#F5CBA7" stroke="#9C6B49" stroke-width="1.5"/>
+                                <!-- Golden Bangles -->
+                                <rect x="108" y="4" width="16" height="8" rx="3" transform="rotate(-25 108 4)" fill="#D4AF37" stroke="#7A5813" stroke-width="1.2"/>
+                            </g>
+
+                            <!-- Flared Golden Bridal Lehenga Skirt -->
+                            <path d="M 68,145 L 126,145 Q 175,255 215,365 Q 98,390 -15,365 Q 25,255 68,145 Z" fill="url(#royalGoldLehenga)" stroke="#9A6B13" stroke-width="2.2"/>
+                            <!-- Lehenga Kali Folds -->
+                            <path d="M 80,145 L 25,368" stroke="#B5831C" stroke-width="1.8"/>
+                            <path d="M 96,145 L 88,375" stroke="#FFF3C4" stroke-width="2"/>
+                            <path d="M 110,145 L 155,368" stroke="#B5831C" stroke-width="1.8"/>
+
+                            <!-- Draped Gold Zari Dupatta -->
+                            <path d="M 62,88 Q 135,125 162,215 Q 110,275 42,255 Q 32,165 62,88 Z" fill="#FDE08D" stroke="#B5831C" stroke-width="2"/>
+
+                            <!-- Bridal Choker & Head -->
+                            <rect x="88" y="64" width="18" height="24" rx="6" fill="#F5CBA7"/>
+                            <path d="M 85,78 Q 97,88 109,78" fill="none" stroke="#D4AF37" stroke-width="5"/>
+                            <ellipse cx="97" cy="46" rx="20" ry="25" fill="#F5CBA7" stroke="#9C6B49" stroke-width="1.5"/>
+                            <path d="M 75,38 C 75,12 122,12 122,38 C 132,65 135,105 118,125 C 115,92 116,55 98,30 C 82,55 80,92 75,115 Z" fill="#1F1614"/>
+                        </g>
+                    </g>
+
+                    <!-- =========================================================
+                         VINTAGE GOLDEN GRAMOPHONES LEFT & RIGHT (Exact Screenshot Match)
+                         ========================================================= -->
+                    <!-- Left Vintage Gramophone -->
+                    <g transform="translate(15, 360)">
+                        <!-- Wooden Base Box -->
+                        <polygon points="10,130 110,130 120,175 0,175" fill="#6E4726" stroke="#3A220F" stroke-width="2.5"/>
+                        <rect x="16" y="138" width="88" height="28" fill="#8C5D34" stroke="#D4AF37" stroke-width="1.5"/>
+                        <!-- Vinyl Platter -->
+                        <ellipse cx="60" cy="126" rx="42" ry="8" fill="#18181B" stroke="#D4AF37" stroke-width="1.5"/>
+                        <!-- Brass Tonearm -->
+                        <path d="M 95,122 Q 115,95 85,75" fill="none" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+                        <!-- Scalloped Golden Gramophone Horn -->
+                        <g class="gramophone-horn gramophone-active">
+                            <ellipse cx="75" cy="52" rx="58" ry="52" fill="url(#gramophoneBrass)" stroke="#5C3D09" stroke-width="2.5"/>
+                            <!-- Petal Scallop Ribs -->
+                            <line x1="75" y1="52" x2="25" y2="25" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="50" y2="3" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="95" y2="3" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="125" y2="25" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="130" y2="68" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="105" y2="98" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="45" y2="98" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="75" y1="52" x2="18" y2="68" stroke="#5C3D09" stroke-width="1.8"/>
+                            <circle cx="75" cy="52" r="14" fill="#4A3006"/>
+                        </g>
+                        <!-- Animated Musical Notes Floating Out -->
+                        <text x="95" y="10" class="music-note-1" fill="#683A6C" font-size="26" font-weight="bold">♪</text>
+                        <text x="125" y="25" class="music-note-2" fill="#B5892E" font-size="24" font-weight="bold">♫</text>
+                    </g>
+
+                    <!-- Right Vintage Gramophone -->
+                    <g transform="translate(665, 360)">
+                        <!-- Wooden Base Box -->
+                        <polygon points="10,130 110,130 120,175 0,175" fill="#6E4726" stroke="#3A220F" stroke-width="2.5"/>
+                        <rect x="16" y="138" width="88" height="28" fill="#8C5D34" stroke="#D4AF37" stroke-width="1.5"/>
+                        <!-- Vinyl Platter -->
+                        <ellipse cx="60" cy="126" rx="42" ry="8" fill="#18181B" stroke="#D4AF37" stroke-width="1.5"/>
+                        <!-- Brass Tonearm -->
+                        <path d="M 25,122 Q 5,95 35,75" fill="none" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+                        <!-- Scalloped Golden Gramophone Horn -->
+                        <g class="gramophone-horn gramophone-active">
+                            <ellipse cx="45" cy="52" rx="58" ry="52" fill="url(#gramophoneBrass)" stroke="#5C3D09" stroke-width="2.5"/>
+                            <line x1="45" y1="52" x2="-5" y2="25" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="20" y2="3" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="65" y2="3" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="95" y2="25" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="100" y2="68" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="75" y2="98" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="15" y2="98" stroke="#5C3D09" stroke-width="1.8"/>
+                            <line x1="45" y1="52" x2="-12" y2="68" stroke="#5C3D09" stroke-width="1.8"/>
+                            <circle cx="45" cy="52" r="14" fill="#4A3006"/>
+                        </g>
+                        <!-- Animated Musical Notes Floating Out -->
+                        <text x="10" y="10" class="music-note-2" fill="#683A6C" font-size="26" font-weight="bold">♫</text>
+                        <text x="-15" y="25" class="music-note-1" fill="#B5892E" font-size="24" font-weight="bold">♪</text>
+                    </g>
                 </svg>
 
-                <!-- Glowing Warm Fairy String Lights Along the Top Curtains -->
-                <div class="absolute top-2 inset-x-0 flex justify-between px-4 sm:px-12">
-                    <!-- Left Fairy Light Cluster -->
-                    <div class="flex gap-3 sm:gap-5">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb mt-2"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-100 shadow-[0_0_15px_#FFD700] fairy-bulb fairy-bulb-delay-1 mt-6"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb fairy-bulb-delay-2 mt-10"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-100 shadow-[0_0_14px_#FFD700] fairy-bulb fairy-bulb-delay-3 mt-4"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb mt-14"></span>
-                    </div>
-                    <!-- Right Fairy Light Cluster -->
-                    <div class="flex gap-3 sm:gap-5">
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb mt-14"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-100 shadow-[0_0_14px_#FFD700] fairy-bulb fairy-bulb-delay-2 mt-4"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb fairy-bulb-delay-1 mt-10"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-100 shadow-[0_0_15px_#FFD700] fairy-bulb fairy-bulb-delay-3 mt-6"></span>
-                        <span class="w-2.5 h-2.5 rounded-full bg-amber-200 shadow-[0_0_12px_#FFD700] fairy-bulb mt-2"></span>
+                <!-- LIVE COUNTDOWN TIMER PILL BAR -->
+                <div class="w-full max-w-xl mx-auto -mt-3 sm:-mt-5 relative z-30 px-2">
+                    <div class="bg-white/95 backdrop-blur-md border-2 border-gold rounded-2xl p-3 sm:p-4 shadow-xl grid grid-cols-4 gap-2 text-center">
+                        <div class="border-r border-gold/30">
+                            <span id="cdDays" class="font-playfair font-bold text-2xl sm:text-4xl text-lavender-dark">00</span>
+                            <p class="font-cinzel text-[9px] sm:text-xs uppercase tracking-widest text-espresso/75">Days</p>
+                        </div>
+                        <div class="border-r border-gold/30">
+                            <span id="cdHours" class="font-playfair font-bold text-2xl sm:text-4xl text-lavender-dark">00</span>
+                            <p class="font-cinzel text-[9px] sm:text-xs uppercase tracking-widest text-espresso/75">Hours</p>
+                        </div>
+                        <div class="border-r border-gold/30">
+                            <span id="cdMins" class="font-playfair font-bold text-2xl sm:text-4xl text-lavender-dark">00</span>
+                            <p class="font-cinzel text-[9px] sm:text-xs uppercase tracking-widest text-espresso/75">Minutes</p>
+                        </div>
+                        <div>
+                            <span id="cdSecs" class="font-playfair font-bold text-2xl sm:text-4xl text-crimson">00</span>
+                            <p class="font-cinzel text-[9px] sm:text-xs uppercase tracking-widest text-espresso/75">Seconds</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- 2. STAGE TOP BRANDING PLAQUE & [संगीत] CAPTION BADGE (Matches Floodlightz Screenshots) -->
-            <div class="relative z-20 mt-8 sm:mt-12 px-4 flex flex-col items-center">
-                <!-- Authentic [संगीत] Caption Badge -->
-                <div class="mb-2 inline-flex items-center gap-2">
-                    <span class="bg-stone-900/90 text-white font-deva text-xs px-2.5 py-0.5 rounded shadow">
-                        [संगीत]
-                    </span>
-                    <span class="text-xs font-cinzel text-lavender-deep font-bold tracking-widest">
-                        !! श्री गणेशाय नमः !!
-                    </span>
+        <!-- Ornate Floral Watercolor Divider -->
+        <div class="flex items-center justify-center py-6 px-6">
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+            <span class="mx-4 text-lavender-deep text-lg">🌸 ❈ 🌿 ❈ 🌸</span>
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+        </div>
+
+        <!-- =============================================================
+             SECTION 2: SACRED SHLOKAS & PARENTS' CORDIAL INVITATION
+             ============================================================= -->
+        <section class="py-10 px-4 sm:px-10 text-center relative">
+            <div class="reveal-item max-w-2xl mx-auto bg-white/80 backdrop-blur-sm border-2 border-gold/60 rounded-3xl p-6 sm:p-10 shadow-xl">
+                
+                <!-- Sacred Sanskrit Shlokas from Original Cards -->
+                <div class="space-y-2 text-xs sm:text-sm font-deva text-crimson font-semibold pb-5 border-b border-gold/30">
+                    <p>मंगलम् भगवान विष्णुः मंगलम् गरुणाध्वजः । मंगलम् पुण्डरीकाक्षः, मंगलायतनो हरिः ॥</p>
+                    <p>वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः । निर्विघ्नं कुरु मे देवः सर्वकार्येषु सर्वदा ॥</p>
                 </div>
 
-                <!-- Black & Gold Rounded Royal Plaque -->
-                <div class="bg-stone-950 border-2 border-gold/80 rounded-2xl px-7 py-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.35)] text-center">
-                    <p class="font-cinzel text-gold tracking-[0.28em] text-sm sm:text-lg font-bold uppercase">
-                        SHARMA &amp; VISHWAKARMA
+                <!-- Parents Invitation Heading -->
+                <div class="mt-6">
+                    <p class="font-cinzel text-xs tracking-[0.25em] text-lavender-deep uppercase font-bold">Blessings of Elders</p>
+                    <h2 class="lang-en font-playfair text-2xl sm:text-3xl font-bold text-espresso mt-1">
+                        Smt. Bindu Sharma &amp; Sh. B.N. Sharma
+                    </h2>
+                    <h2 class="lang-hi hidden font-hindi text-2xl sm:text-4xl text-crimson mt-1">
+                        श्रीमती बिन्दु शर्मा एवं श्री बी. एन. शर्मा
+                    </h2>
+                    <p class="lang-en font-cormorant italic text-lg sm:text-xl text-espresso/90 mt-2">
+                        Request the honour of your gracious presence &amp; blessings on the auspicious occasion of the Wedding Ceremony of their beloved son
                     </p>
-                    <p class="font-cinzel text-cream/80 tracking-[0.45em] text-[10px] sm:text-xs uppercase mt-0.5">
-                        WEDDING CELEBRATION
+                    <p class="lang-hi hidden font-deva text-sm sm:text-base text-espresso/90 mt-2">
+                        अपने प्रिय सुपुत्र के शुभ विवाह के पावन अवसर पर आपकी गरिमामयी उपस्थिति एवं आशीर्वाद की सादर कामना करते हैं
                     </p>
                 </div>
 
-                <!-- BOLD EDITORIAL SERIF HEADLINE (Matches "Songs For Sisters / Best Varmala Songs" Typography) -->
-                <div class="mt-6 max-w-xl mx-auto">
-                    <div class="lang-en">
-                        <p class="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-lavender-deep font-bold uppercase mb-1">
-                            Saturday • 21st November 2026
+                <!-- Bride & Groom Pedigree Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-center">
+                    
+                    <!-- GROOM PEDIGREE -->
+                    <div class="rounded-2xl bg-gradient-to-b from-cream-light to-cream-warm border-2 border-gold p-6 shadow-md hover:shadow-xl transition">
+                        <span class="px-3 py-1 rounded-full bg-lavender/15 text-lavender-dark font-cinzel font-bold text-[10px] tracking-widest uppercase">
+                            The Groom • चि० वर
+                        </span>
+                        <h3 class="lang-en font-script text-4xl sm:text-5xl text-crimson mt-3">Piyush Sharma</h3>
+                        <h3 class="lang-hi hidden font-hindi text-3xl sm:text-4xl text-crimson mt-3">चि० पियूष शर्मा</h3>
+                        <p class="text-sm sm:text-base font-bold text-espresso mt-2">
+                            S/o Smt. Bindu Sharma &amp; Sh. B.N. Sharma
                         </p>
-                        <h1 class="font-playfair font-bold text-4xl sm:text-6xl text-espresso leading-tight tracking-tight drop-shadow-sm">
-                            Piyush &amp; Sabhya&rsquo;s<br>
-                            <span class="text-lavender-deep italic font-normal">Grand Wedding</span>
-                        </h1>
+                        <p class="text-xs sm:text-sm italic text-espresso/80 mt-1">
+                            (Grand S/o Late Smt. Tapeshwari Devi &amp; Late Sh. Bhimal Sharma)
+                        </p>
+                        <p class="text-xs text-lavender-dark font-semibold mt-3 pt-2 border-t border-gold/30">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Mohanapur, Badkatola, Bhajuram Chauraha, Padari Bazar, Gorakhpur (U.P.)
+                        </p>
                     </div>
 
-                    <div class="lang-hi hidden">
-                        <p class="font-deva text-sm sm:text-base text-lavender-deep font-bold mb-1">
+                    <!-- BRIDE PEDIGREE -->
+                    <div class="rounded-2xl bg-gradient-to-b from-cream-light to-cream-warm border-2 border-gold p-6 shadow-md hover:shadow-xl transition">
+                        <span class="px-3 py-1 rounded-full bg-lavender/15 text-lavender-dark font-cinzel font-bold text-[10px] tracking-widest uppercase">
+                            The Bride • आयु० वधू
+                        </span>
+                        <h3 class="lang-en font-script text-4xl sm:text-5xl text-crimson mt-3">Sabhya Vishwakarma</h3>
+                        <h3 class="lang-hi hidden font-hindi text-3xl sm:text-4xl text-crimson mt-3">आयु० सभ्या विश्वकर्मा</h3>
+                        <p class="text-sm sm:text-base font-bold text-espresso mt-2">
+                            D/o Smt. Shakuntala Devi &amp; Sh. Harilal Vishwakarma
+                        </p>
+                        <p class="text-xs sm:text-sm italic text-espresso/80 mt-1">
+                            Blessed with Grace &amp; Joy
+                        </p>
+                        <p class="text-xs text-lavender-dark font-semibold mt-3 pt-2 border-t border-gold/30">
+                            <i class="fa-solid fa-location-dot mr-1"></i> R/o - Pipara (Titila), Hata, Distt. Kushinagar (U.P.)
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================================
+             SECTION 3: WEDDING FUNCTIONS & BARAT ROUTE (FROM CARD 3)
+             ============================================================= -->
+        <section class="py-10 px-4 sm:px-10 relative">
+            <div class="reveal-item text-center mb-8">
+                <p class="font-cinzel text-xs tracking-[0.3em] text-lavender-deep uppercase font-bold">Celebration Schedule</p>
+                <h2 class="lang-en font-playfair text-3xl sm:text-5xl font-bold text-espresso mt-1">Wedding Ceremonies</h2>
+                <h2 class="lang-hi hidden font-hindi text-3xl sm:text-5xl text-crimson mt-1">मांगलिक कार्यक्रम</h2>
+                <p class="font-cormorant italic text-lg text-espresso/80 mt-1">"From Once Upon a Time to Happily Ever After"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                
+                <!-- HALDI CEREMONY CARD -->
+                <div class="reveal-item rounded-3xl bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-100 border-2 border-amber-400 p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-amber-400 text-espresso font-cinzel font-bold text-[10px] tracking-widest uppercase">
+                            🌼 Auspicious Haldi
+                        </span>
+                        <span class="text-2xl">✨🍋</span>
+                    </div>
+                    <h3 class="lang-en font-script text-4xl sm:text-5xl text-amber-900">Haldi Ceremony</h3>
+                    <h3 class="lang-hi hidden font-hindi text-3xl sm:text-4xl text-amber-900">हल्दी रस्म</h3>
+                    <div class="my-4 space-y-1 text-espresso font-bold">
+                        <p class="font-cinzel text-sm sm:text-base">
+                            <i class="fa-regular fa-calendar text-amber-700 mr-2"></i>FRIDAY, 20<sup>TH</sup> NOVEMBER 2026
+                        </p>
+                        <p class="text-base sm:text-lg text-amber-900">
+                            <i class="fa-regular fa-clock text-amber-700 mr-2"></i>11:00 A.M.
+                        </p>
+                    </div>
+                    <p class="text-xs text-espresso/80">
+                        At Our Residence: Mohanapur, Badkatola, Bhajuram Chauraha, Padari Bazar, Gorakhpur
+                    </p>
+                </div>
+
+                <!-- WEDDING & DEPARTURE OF BARAT CARD -->
+                <div class="reveal-item rounded-3xl bg-gradient-to-br from-lavender-light/35 via-white to-cream-peach border-2 border-lavender-deep p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 rounded-full bg-lavender-deep text-white font-cinzel font-bold text-[10px] tracking-widest uppercase">
+                            👑 Shubh Vivah &amp; Barat
+                        </span>
+                        <span class="text-2xl">🎺🐎</span>
+                    </div>
+                    <h3 class="lang-en font-script text-4xl sm:text-5xl text-crimson">Wedding &amp; Tilak</h3>
+                    <h3 class="lang-hi hidden font-hindi text-3xl sm:text-4xl text-crimson">बारात प्रस्थान एवं तिलक</h3>
+                    <div class="my-4 space-y-1 text-espresso font-bold">
+                        <p class="font-cinzel text-sm sm:text-base">
+                            <i class="fa-regular fa-calendar text-lavender-deep mr-2"></i>SATURDAY, 21<sup>ST</sup> NOVEMBER 2026
+                        </p>
+                        <p class="text-base sm:text-lg text-crimson">
+                            <i class="fa-regular fa-clock text-lavender-deep mr-2"></i>Departure of Barat &amp; Tilak: 05:00 P.M.
+                        </p>
+                    </div>
+                    <p class="text-xs italic text-espresso/90 bg-white/80 p-2.5 rounded-xl border border-gold/40">
+                        <strong>Note:</strong> Barat will depart from Mohanapur, Badkatola, Bhajuram Chauraha, Padari Bazar, Gorakhpur (U.P.) to Venue.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- VENUE BANNER (PRINCE LAWN) -->
+            <div class="reveal-item max-w-3xl mx-auto mt-6 rounded-3xl bg-gradient-to-r from-lavender-dark via-lavender-deep to-lavender-dark text-white border-2 border-gold p-6 sm:p-8 text-center shadow-2xl">
+                <p class="font-cinzel text-xs tracking-[0.3em] text-gold-light uppercase">Wedding Venue • विवाह स्थल</p>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-bold gold-foil-text mt-1">
+                    PRINCE LAWN
+                </h3>
+                <p class="font-cinzel text-sm sm:text-lg text-cream-light tracking-wider mt-1">
+                    PADRI BAZAR, GORAKHPUR (U.P.)
+                </p>
+                <div class="mt-5 flex flex-wrap justify-center gap-3">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Prince+Lawn+Padri+Bazar+Gorakhpur+UP" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full bg-gold text-espresso font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Google Maps Directions
+                    </a>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Piyush+Weds+Sabhya+-+Wedding+Ceremony&dates=20261121T113000Z/20261121T182900Z&details=Wedding+Ceremony+of+Piyush+%26+Sabhya+at+Prince+Lawn,+Padri+Bazar,+Gorakhpur&location=Prince+Lawn,+Padri+Bazar,+Gorakhpur,+Uttar+Pradesh" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-gold-light font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg transition flex items-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i> Save to Calendar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =============================================================
+             SECTION 4: INTERACTIVE 3D FLIP HINDI GATE PASS (CARD 1)
+             ============================================================= -->
+        <section class="py-10 px-4 sm:px-10">
+            <div class="reveal-item max-w-xl mx-auto text-center mb-4">
+                <span class="px-3 py-1 rounded-full bg-gold/20 border border-gold text-espresso font-cinzel font-bold text-[10px] uppercase tracking-widest">
+                    Interactive Gate Pass • प्रवेश कार्ड
+                </span>
+                <p class="text-xs sm:text-sm text-espresso/80 mt-1">Tap the card below to flip between the traditional Hindi Entry Card &amp; English Keepsake</p>
+            </div>
+
+            <div class="reveal-item max-w-xl mx-auto flip-perspective">
+                <div id="gatePassCard" onclick="this.classList.toggle('flipped'); spawnConfettiBurst(25);" class="flip-inner cursor-pointer min-h-[330px] sm:min-h-[360px]">
+                    
+                    <!-- FRONT: Exact Hindi Card Recreation -->
+                    <div class="flip-front rounded-3xl bg-gradient-to-br from-cream-light via-orange-50 to-peach border-4 border-double border-crimson p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-2 left-3 text-2xl">🌺🌿</div>
+                        <div class="absolute top-2 right-3 text-2xl">🌿🌺</div>
+                        <div class="absolute bottom-2 left-3 text-2xl">🌺🌿</div>
+                        <div class="absolute bottom-2 right-3 text-2xl">🌿🌺</div>
+
+                        <p class="font-deva font-bold text-crimson text-lg sm:text-2xl mt-1">
                             शनिवार, 21 नवम्बर 2026
                         </p>
-                        <h1 class="font-hindi text-4xl sm:text-6xl text-crimson leading-tight">
-                            चि० पियूष <span class="text-lavender-deep text-3xl sm:text-4xl">संग</span> आयु० सभ्या
-                        </h1>
-                        <p class="font-deva text-xs sm:text-sm text-espresso/80 mt-1">
-                            शुभ विवाह एवं संगीत समारोह
-                        </p>
+
+                        <div class="my-2">
+                            <h3 class="font-hindi text-4xl sm:text-6xl text-crimson drop-shadow-sm">चि० पियूष</h3>
+                            <div class="flex items-center justify-center gap-6 my-1 text-crimson">
+                                <span class="text-2xl">🎺🥁</span>
+                                <span class="font-hindi text-xl sm:text-2xl">संग</span>
+                                <span class="text-2xl">🥁🎺</span>
+                            </div>
+                            <h3 class="font-hindi text-4xl sm:text-6xl text-crimson drop-shadow-sm">आयु० सभ्या</h3>
+                        </div>
+
+                        <div class="border-t-2 border-crimson/50 pt-3">
+                            <p class="font-deva font-bold text-crimson-deep text-xs sm:text-base">
+                                नोट : प्रवेश हेतु इस कार्ड को अपने साथ अवश्य लाये ।
+                            </p>
+                            <span class="inline-block mt-1 text-[10px] font-cinzel text-lavender-dark uppercase tracking-widest">
+                                <i class="fa-solid fa-rotate mr-1"></i> Tap Card to Flip
+                            </span>
+                        </div>
                     </div>
 
-                    <!-- Interactive Pose / Outfit Switcher Pills -->
-                    <div class="mt-4 inline-flex flex-wrap items-center justify-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-gold/50 shadow-sm">
-                        <button id="poseBtnSangeet" onclick="setCouplePose('sangeet')" class="text-xs font-playfair font-bold px-3 py-1 rounded-full bg-lavender-deep text-white transition">
-                            💃 Sangeet Dance Look
-                        </button>
-                        <button id="poseBtnVarmala" onclick="setCouplePose('varmala')" class="text-xs font-playfair font-bold px-3 py-1 rounded-full text-espresso hover:bg-gold/20 transition">
-                            👑 Golden Varmala Look
-                        </button>
-                        <button onclick="togglePhotoModal()" class="text-xs font-playfair font-bold px-3 py-1 rounded-full text-crimson hover:bg-crimson/10 transition flex items-center gap-1">
-                            <i class="fa-solid fa-upload text-[10px]"></i> Your Photos
-                        </button>
+                    <!-- BACK: English Gate Pass -->
+                    <div class="flip-back rounded-3xl bg-gradient-to-br from-cream-light via-white to-lavender-light/30 border-4 border-double border-gold p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xl">
+                        <div>
+                            <p class="font-cinzel text-xs tracking-[0.25em] text-lavender-deep font-bold uppercase">Royal Entry Pass</p>
+                            <h4 class="font-script text-4xl sm:text-5xl text-crimson mt-1">Piyush &amp; Sabhya</h4>
+                            <p class="font-cinzel font-bold text-xs sm:text-sm text-espresso mt-1">Saturday, 21 November 2026 • 5:00 PM</p>
+                        </div>
+                        <div class="py-3 border-y border-gold/50">
+                            <p class="font-cinzel font-bold text-sm sm:text-base text-lavender-dark">VENUE: PRINCE LAWN</p>
+                            <p class="text-xs text-espresso">Padri Bazar, Gorakhpur (U.P.)</p>
+                        </div>
+                        <div class="text-xs text-espresso">
+                            <p class="font-bold">Host: Sh. B.N. Sharma (M: 6394698686, 9415887626)</p>
+                            <span class="inline-block mt-1 text-[10px] font-cinzel text-lavender-dark uppercase tracking-widest">
+                                <i class="fa-solid fa-rotate mr-1"></i> Tap to Flip Back
+                            </span>
+                        </div>
                     </div>
+
                 </div>
             </div>
+        </section>
 
-            <!-- 3. CENTERPIECE ILLUSTRATED STAGE: TROPICAL PALMS, MARBLE BALUSTRADE,
-                    VINTAGE GRAMOPHONES & DANCING COUPLE ENJOYING TOGETHER! -->
-            <div class="relative w-full max-w-3xl mx-auto mt-2 pt-4 px-2 flex flex-col items-center justify-end z-20">
+        <!-- =============================================================
+             SECTION 5: KIDS' INVITATION QUOTE (BAL MANUHAR)
+             ============================================================= -->
+        <section class="py-8 px-4 sm:px-10">
+            <div class="reveal-item max-w-2xl mx-auto rounded-3xl bg-white/90 border-2 border-dashed border-lavender-deep p-6 sm:p-8 text-center shadow-lg">
+                <span class="px-4 py-1 rounded-full bg-lavender-light/40 text-lavender-dark font-cinzel font-bold text-xs uppercase tracking-widest">
+                    🎈 Little Hearts' Invitation • बाल मनुहार 🎉
+                </span>
+                <p class="font-script text-3xl sm:text-4xl text-crimson mt-4 leading-relaxed">
+                    "Dhol Taase Hue Purrane, D.J. Ka Zamana Hai<br>
+                    Hamare Mama Ki Shadi Mein Jalool Jalool Aana Hai...."
+                </p>
+                <div class="mt-4 flex flex-wrap justify-center gap-2.5 font-cinzel font-bold text-xs text-lavender-dark">
+                    <span class="px-3.5 py-1.5 rounded-full bg-cream-warm border border-gold">💖 ASHWIKA (PARI)</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-cream-warm border border-gold">🌟 AARAV (LADDU)</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-cream-warm border border-gold">✨ AAROHI (NAVYA)</span>
+                </div>
+            </div>
+        </section>
 
-                <!-- Custom Photo Frame (Hidden unless user uploads their own photos) -->
-                <div id="customCouplePhotoDisplay" class="hidden relative z-30 mb-4 couple-dancing">
-                    <div class="relative mx-auto w-64 h-80 sm:w-72 sm:h-96 rounded-t-full rounded-b-3xl border-4 border-gold bg-cream shadow-2xl overflow-hidden flex items-center justify-center">
-                        <img id="uploadedTogetherImg" src="" alt="Piyush & Sabhya" class="w-full h-full object-cover hidden"/>
-                        <div id="uploadedSplitContainer" class="w-full h-full grid grid-cols-2 hidden">
-                            <img id="uploadedGroomImg" src="https://placehold.co/300x500/3B2818/F5E29C?text=Piyush" alt="Piyush" class="w-full h-full object-cover border-r border-gold"/>
-                            <img id="uploadedBrideImg" src="https://placehold.co/300x500/7A111E/F5E29C?text=Sabhya" alt="Sabhya" class="w-full h-full object-cover"/>
-                        </div>
-                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-900/60 to-transparent p-3 text-center">
-                            <p class="font-script text-2xl text-gold-light">Piyush &amp; Sabhya</p>
-                        </div>
+        <!-- =============================================================
+             SECTION 6: FAMILY R.S.V.P., COMPLIMENTS & WHATSAPP/CALL
+             ============================================================= -->
+        <section class="py-10 px-4 sm:px-10">
+            <div class="reveal-item max-w-3xl mx-auto space-y-6">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- RSVP List -->
+                    <div class="bg-white/85 border border-gold rounded-2xl p-6 shadow-md text-center md:text-left">
+                        <h3 class="font-script text-3xl text-crimson border-b border-gold/40 pb-2 mb-3">R.S.V.P. • दर्शनाभिलाषी</h3>
+                        <ul class="space-y-1 text-sm sm:text-base font-semibold text-espresso">
+                            <li>• Dr. K.K. Sharma</li>
+                            <li>• Sh. P.K. Sharma</li>
+                            <li>• Sh. Dilip Sharma</li>
+                            <li>• Sh. Deepak Sharma</li>
+                            <li>• Sh. Ashok Sharma</li>
+                            <li>• Sh. Abhishek Kumar</li>
+                        </ul>
+                    </div>
+
+                    <!-- Best Compliments -->
+                    <div class="bg-white/85 border border-gold rounded-2xl p-6 shadow-md text-center md:text-right">
+                        <h3 class="font-script text-3xl text-crimson border-b border-gold/40 pb-2 mb-3">With Best Compliments From</h3>
+                        <ul class="space-y-1 text-sm sm:text-base font-semibold text-espresso">
+                            <li>Ranjeet •</li>
+                            <li>Manjeet, Ankit •</li>
+                            <li>Mohit •</li>
+                            <li>Om Prakash Sharma •</li>
+                            <li>Alok Sharma •</li>
+                            <li class="text-lavender-dark font-bold">&amp; Sharma Family •</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- MASTER ILLUSTRATED STAGE SVG (Palms, Marble Railing, Gramophones & Both Couple Poses) -->
-                <div id="svgStageContainer" class="w-full relative">
-                    <svg class="w-full h-auto max-h-[540px] mx-auto overflow-visible" viewBox="0 0 800 560">
-                        <defs>
-                            <!-- Shimmering Silver/Champagne Gown Gradient (Pose 1) -->
-                            <linearGradient id="silverGownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFFDF9"/>
-                                <stop offset="35%" stop-color="#E5D7C1"/>
-                                <stop offset="70%" stop-color="#C2B097"/>
-                                <stop offset="100%" stop-color="#8C7A62"/>
-                            </linearGradient>
-                            <!-- Royal Golden Lehenga Gradient (Pose 2) -->
-                            <linearGradient id="goldLehengaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFF3B0"/>
-                                <stop offset="45%" stop-color="#E8B949"/>
-                                <stop offset="100%" stop-color="#B87E14"/>
-                            </linearGradient>
-                            <!-- Cream Golden Sherwani Gradient (Pose 2) -->
-                            <linearGradient id="creamSherwaniGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFFDF5"/>
-                                <stop offset="60%" stop-color="#F3DFB6"/>
-                                <stop offset="100%" stop-color="#D4B075"/>
-                            </linearGradient>
-                            <!-- Brass Gramophone Gradient -->
-                            <linearGradient id="brassHornGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#FFF2B2"/>
-                                <stop offset="45%" stop-color="#D4AF37"/>
-                                <stop offset="80%" stop-color="#8A5A10"/>
-                                <stop offset="100%" stop-color="#4A2E04"/>
-                            </linearGradient>
-                            <!-- Wooden Stage Floor Gradient -->
-                            <linearGradient id="woodFloorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#F2D7AE"/>
-                                <stop offset="100%" stop-color="#D9B079"/>
-                            </linearGradient>
-                        </defs>
-
-                        <!-- A. LUSH TROPICAL PALMS & BLOOMING FLOWERS BEHIND RAILING -->
-                        <g class="palm-sway">
-                            <!-- Left Banana & Tropical Palm Leaves -->
-                            <path d="M90,410 Q30,310 10,250 Q65,275 110,380 Z" fill="#5D9372" stroke="#365E46" stroke-width="1.5"/>
-                            <path d="M115,410 Q55,280 45,210 Q105,260 135,390 Z" fill="#77AD8B" stroke="#365E46" stroke-width="1.5"/>
-                            <path d="M140,410 Q130,290 165,235 Q180,310 155,405 Z" fill="#4D7E60" stroke="#365E46" stroke-width="1.5"/>
-                            <!-- Left Pink Hibiscus Flowers -->
-                            <circle cx="55" cy="365" r="14" fill="#E86F88"/>
-                            <circle cx="55" cy="365" r="4" fill="#FFD700"/>
-                            <circle cx="115" cy="375" r="12" fill="#F28482"/>
-                            <circle cx="115" cy="375" r="3.5" fill="#FFD700"/>
-                        </g>
-
-                        <g class="palm-sway" style="animation-delay: -2.2s;">
-                            <!-- Right Tropical Areca Palm Fronds -->
-                            <path d="M700,410 Q750,300 785,240 Q725,270 680,390 Z" fill="#5D9372" stroke="#365E46" stroke-width="1.5"/>
-                            <path d="M675,410 Q720,275 735,205 Q675,255 655,395 Z" fill="#77AD8B" stroke="#365E46" stroke-width="1.5"/>
-                            <path d="M650,410 Q645,305 615,245 Q610,320 638,405 Z" fill="#4D7E60" stroke="#365E46" stroke-width="1.5"/>
-                            <!-- Right Pink Hibiscus Flowers -->
-                            <circle cx="695" cy="372" r="13" fill="#E86F88"/>
-                            <circle cx="695" cy="372" r="4" fill="#FFD700"/>
-                        </g>
-
-                        <!-- B. WHITE MARBLE TERRACE BALUSTRADE & PILLARS -->
-                        <g>
-                            <!-- Left & Right Tall Classical Columns -->
-                            <rect x="0" y="290" width="32" height="190" fill="#F2EFE9" stroke="#C7C0B3" stroke-width="1.5"/>
-                            <rect x="-4" y="282" width="40" height="10" rx="3" fill="#FFFFFF" stroke="#B5AEA0" stroke-width="1.5"/>
-                            <rect x="768" y="290" width="32" height="190" fill="#F2EFE9" stroke="#C7C0B3" stroke-width="1.5"/>
-                            <rect x="764" y="282" width="40" height="10" rx="3" fill="#FFFFFF" stroke="#B5AEA0" stroke-width="1.5"/>
-
-                            <!-- Balustrade Top & Bottom Rails -->
-                            <rect x="28" y="395" width="744" height="10" fill="#FAF8F5" stroke="#C7C0B3" stroke-width="1.5"/>
-                            <rect x="28" y="455" width="744" height="12" fill="#EAE5DC" stroke="#C7C0B3" stroke-width="1.5"/>
-
-                            <!-- Marble Baluster Pillars -->
-                            <g fill="#F7F4EE" stroke="#C7C0B3" stroke-width="1.2">
-                                <rect x="55" y="405" width="12" height="50" rx="5"/>
-                                <rect x="90" y="405" width="12" height="50" rx="5"/>
-                                <rect x="125" y="405" width="12" height="50" rx="5"/>
-                                <rect x="160" y="405" width="12" height="50" rx="5"/>
-                                <rect x="195" y="405" width="12" height="50" rx="5"/>
-                                <rect x="230" y="405" width="12" height="50" rx="5"/>
-                                <rect x="560" y="405" width="12" height="50" rx="5"/>
-                                <rect x="595" y="405" width="12" height="50" rx="5"/>
-                                <rect x="630" y="405" width="12" height="50" rx="5"/>
-                                <rect x="665" y="405" width="12" height="50" rx="5"/>
-                                <rect x="700" y="405" width="12" height="50" rx="5"/>
-                                <rect x="735" y="405" width="12" height="50" rx="5"/>
-                            </g>
-
-                            <!-- Warm Wooden Stage Floor Deck -->
-                            <polygon points="0,467 800,467 800,560 0,560" fill="url(#woodFloorGrad)"/>
-                            <line x1="0" y1="467" x2="800" y2="467" stroke="#B88E52" stroke-width="2"/>
-                        </g>
-
-                        <!-- C. ANIMATED COUPLE ENJOYING & DANCING TOGETHER -->
-                        <!-- POSE 1: SANGEET CELEBRATION DANCE (Groom in Black Sherwani Jumping/Waving + Bride in Shimmering Gown Twirling - Image 1) -->
-                        <g id="couplePoseSangeet" class="couple-dancing">
-                            <!-- GROOM (Right Side - Black Royal Sherwani, Beard, Smiling, Left Hand Raised High!) -->
-                            <g>
-                                <!-- Groom Legs (Playful Bhangra/Dance Kick Pose!) -->
-                                <path d="M435,375 L465,470 L485,480" stroke="#181518" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <path d="M475,375 L515,420 L495,450" stroke="#1F1B20" stroke-width="19" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <!-- Groom Black Dress Shoes -->
-                                <ellipse cx="490" cy="488" rx="16" ry="8" transform="rotate(-15 490 488)" fill="#0D0D0D" stroke="#D4AF37" stroke-width="1.5"/>
-                                <ellipse cx="492" cy="454" rx="14" ry="7" transform="rotate(25 492 454)" fill="#0D0D0D" stroke="#D4AF37" stroke-width="1.5"/>
-
-                                <!-- Groom Raised Left Arm Waving Joyfully -->
-                                <g class="dance-arm-right">
-                                    <path d="M495,185 Q555,175 585,120" stroke="#1C191D" stroke-width="22" stroke-linecap="round" fill="none"/>
-                                    <!-- Groom Raised Hand -->
-                                    <circle cx="592" cy="108" r="12" fill="#F2C29B" stroke="#4A2E1B" stroke-width="1.5"/>
-                                    <path d="M585,100 L582,84 M591,98 L592,80 M597,100 L601,83 M602,105 L610,92" stroke="#F2C29B" stroke-width="4" stroke-linecap="round"/>
-                                </g>
-
-                                <!-- Groom Right Arm Holding Bride -->
-                                <path d="M415,190 Q385,220 365,240" stroke="#1C191D" stroke-width="20" stroke-linecap="round" fill="none"/>
-
-                                <!-- Groom Black Achkan / Sherwani Coat -->
-                                <path d="M410,170 L498,165 L505,280 L535,385 L395,390 L412,280 Z" fill="#1C181B" stroke="#3A3238" stroke-width="1.5"/>
-                                <!-- Golden Buttons & Pocket Square -->
-                                <circle cx="452" cy="188" r="2.8" fill="#D4AF37"/>
-                                <circle cx="453" cy="208" r="2.8" fill="#D4AF37"/>
-                                <circle cx="454" cy="228" r="2.8" fill="#D4AF37"/>
-                                <circle cx="455" cy="248" r="2.8" fill="#D4AF37"/>
-                                <circle cx="456" cy="268" r="2.8" fill="#D4AF37"/>
-                                <circle cx="457" cy="288" r="2.8" fill="#D4AF37"/>
-                                <!-- Golden Brooch / Pocket Detail -->
-                                <rect x="424" y="205" width="16" height="20" rx="2" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
-                                <path d="M428,205 L432,196 L438,205 Z" fill="#D4AF37"/>
-
-                                <!-- Groom Neck & Faceless Minimalist Bearded Head -->
-                                <rect x="440" y="145" width="22" height="25" rx="6" fill="#F2C29B"/>
-                                <!-- Collar -->
-                                <path d="M432,165 L451,176 L470,163" fill="none" stroke="#D4AF37" stroke-width="2.5"/>
-                                <!-- Head Base -->
-                                <path d="M426,112 C426,90 474,90 474,112 C474,142 465,156 450,156 C435,156 426,142 426,112 Z" fill="#F2C29B" stroke="#4A2E1B" stroke-width="1.5"/>
-                                <!-- Stylish Pompadour Hair -->
-                                <path d="M424,115 C420,92 435,80 455,82 C472,83 482,95 475,115 C472,102 462,96 445,97 C432,98 428,105 424,115 Z" fill="#181416"/>
-                                <!-- Groom Beard & Joyful Smile -->
-                                <path d="M427,124 C428,144 438,156 450,156 C462,156 472,144 473,124 C469,138 462,142 450,142 C438,142 431,138 427,124 Z" fill="#231D20"/>
-                                <!-- White Smile inside Beard -->
-                                <path d="M442,140 Q450,147 458,140 Z" fill="#FFFFFF"/>
-                            </g>
-
-                            <!-- BRIDE (Left Side - Twirling Champagne/Silver Sparkle Ballgown & Raising Hand!) -->
-                            <g>
-                                <!-- Bride Raised Right Arm Celebrating -->
-                                <g class="dance-arm-left">
-                                    <path d="M315,220 Q270,185 240,145" stroke="#F5CBA7" stroke-width="11" stroke-linecap="round" fill="none"/>
-                                    <circle cx="235" cy="138" r="7" fill="#F5CBA7"/>
-                                </g>
-                                <!-- Bride Left Arm Holding Groom -->
-                                <path d="M365,220 Q390,245 412,242" stroke="#F5CBA7" stroke-width="11" stroke-linecap="round" fill="none"/>
-
-                                <!-- Flowing Voluminous Shimmering Gown Skirt -->
-                                <path d="M322,265 L362,265 L445,495 Q340,515 215,490 Z" fill="url(#silverGownGrad)" stroke="#5C4B3B" stroke-width="1.8"/>
-                                <!-- Gown Pleat Lines & Sparkle Dots -->
-                                <path d="M332,265 L265,492 M342,265 L315,498 M352,265 L368,498 M358,265 L410,494" stroke="#7A6855" stroke-width="1.2" opacity="0.55"/>
-                                <!-- Bodice -->
-                                <path d="M320,215 L364,215 L362,265 L322,265 Z" fill="url(#silverGownGrad)" stroke="#5C4B3B" stroke-width="1.5"/>
-                                <rect x="322" y="259" width="40" height="6" fill="#FFFDF9" stroke="#8C7A62" stroke-width="1"/>
-
-                                <!-- Bride Neck, Faceless Head & Flowing Wavy Dark Hair -->
-                                <rect x="335" y="192" width="14" height="24" rx="5" fill="#F5CBA7"/>
-                                <!-- Back Hair -->
-                                <path d="M312,165 C300,195 302,240 318,255 C335,260 355,260 372,250 C385,230 382,190 368,165 Z" fill="#1A1517"/>
-                                <!-- Faceless Head -->
-                                <path d="M324,162 C324,144 360,144 360,162 C360,185 352,196 342,196 C332,196 324,185 324,162 Z" fill="#F5CBA7" stroke="#5C4028" stroke-width="1.4"/>
-                                <!-- Front Wavy Hair Framing Face -->
-                                <path d="M342,144 C324,144 315,162 318,195 C323,175 328,160 342,154 C354,160 360,175 364,198 C370,165 360,144 342,144 Z" fill="#1A1517"/>
-                            </g>
-                        </g>
-
-                        <!-- POSE 2: GOLDEN VARMALA ROYAL DANCE (Groom in Cream/Gold Sherwani + Emerald Necklace & Bride in Gold Lehenga - Images 2 & 3) -->
-                        <g id="couplePoseVarmala" class="couple-dancing hidden">
-                            <!-- Groom in Royal Cream/Gold Sherwani & Emerald Mala -->
-                            <g>
-                                <!-- Groom Kurta Pajama Legs -->
-                                <rect x="315" y="395" width="22" height="80" rx="8" fill="#F5E1BE" stroke="#9C7A44" stroke-width="1.5"/>
-                                <rect x="355" y="395" width="22" height="80" rx="8" fill="#F5E1BE" stroke="#9C7A44" stroke-width="1.5"/>
-                                <!-- Golden Mojari Shoes -->
-                                <ellipse cx="324" cy="482" rx="15" ry="7" fill="#D4AF37" stroke="#7A5812" stroke-width="1.5"/>
-                                <ellipse cx="366" cy="482" rx="15" ry="7" fill="#D4AF37" stroke="#7A5812" stroke-width="1.5"/>
-
-                                <!-- Groom Raised Arm Celebrating -->
-                                <path d="M390,195 Q445,165 485,120" stroke="url(#creamSherwaniGrad)" stroke-width="22" stroke-linecap="round" fill="none"/>
-                                <circle cx="492" cy="112" r="11" fill="#F2C29B"/>
-
-                                <!-- Cream & Gold Embroidered Sherwani -->
-                                <path d="M300,175 L395,175 L408,405 L292,405 Z" fill="url(#creamSherwaniGrad)" stroke="#9C7A44" stroke-width="1.8"/>
-                                <!-- Draped Peach/Gold Stole (Dupatta) -->
-                                <path d="M302,178 L335,178 L345,425 L295,425 Z" fill="#F5C396" stroke="#B37D4E" stroke-width="1.5"/>
-                                <!-- Multi-strand Emerald Green Royal Necklace -->
-                                <path d="M328,175 Q352,225 376,175" fill="none" stroke="#146B3A" stroke-width="3" stroke-dasharray="3 2"/>
-                                <path d="M324,175 Q352,242 380,175" fill="none" stroke="#146B3A" stroke-width="3.5" stroke-dasharray="3 2"/>
-                                <path d="M320,175 Q352,258 384,175" fill="none" stroke="#146B3A" stroke-width="3" stroke-dasharray="3 2"/>
-
-                                <!-- Groom Head & Smile -->
-                                <rect x="338" y="150" width="22" height="25" rx="5" fill="#F2C29B"/>
-                                <path d="M325,115 C325,92 373,92 373,115 C373,145 364,158 349,158 C334,158 325,145 325,115 Z" fill="#F2C29B" stroke="#4A2E1B" stroke-width="1.5"/>
-                                <path d="M323,118 C320,92 335,82 354,84 C372,85 380,98 374,118 C370,104 360,98 344,99 C331,100 327,108 323,118 Z" fill="#181416"/>
-                                <path d="M326,126 C327,146 337,158 349,158 C361,158 371,146 372,126 C368,140 361,144 349,144 C337,144 330,140 326,126 Z" fill="#231D20"/>
-                                <path d="M341,142 Q349,149 357,142 Z" fill="#FFFFFF"/>
-                            </g>
-
-                            <!-- Bride in Royal Golden Lehenga Dancing -->
-                            <g>
-                                <!-- Bride Raised Arm with Golden Bangles -->
-                                <path d="M475,215 Q515,175 495,125" stroke="#F5CBA7" stroke-width="12" stroke-linecap="round" fill="none"/>
-                                <rect x="490" y="138" width="14" height="10" rx="2" transform="rotate(-20 490 138)" fill="#D4AF37" stroke="#7A5812" stroke-width="1"/>
-
-                                <!-- Golden Flared Lehenga Skirt -->
-                                <path d="M420,275 L475,275 L545,490 Q450,510 355,490 Z" fill="url(#goldLehengaGrad)" stroke="#8C5A08" stroke-width="1.8"/>
-                                <!-- Golden Dupatta Drape -->
-                                <path d="M412,215 Q455,235 495,355 Q440,395 395,345 Z" fill="#F7CE68" stroke="#9E6B12" stroke-width="1.5"/>
-                                <!-- Golden Choker Necklace -->
-                                <rect x="436" y="198" width="22" height="8" rx="3" fill="#FFD700" stroke="#8C5A08" stroke-width="1"/>
-
-                                <!-- Bride Head & Flowing Hair -->
-                                <path d="M415,165 C405,198 408,245 422,260 C442,265 468,265 485,250 C495,225 490,190 475,165 Z" fill="#1A1517"/>
-                                <path d="M428,162 C428,144 466,144 466,162 C466,185 458,196 447,196 C436,196 428,185 428,162 Z" fill="#F5CBA7" stroke="#5C4028" stroke-width="1.4"/>
-                                <path d="M447,144 C428,144 418,162 422,195 C427,175 433,160 447,154 C459,160 465,175 470,198 C475,165 466,144 447,144 Z" fill="#1A1517"/>
-                            </g>
-                        </g>
-
-                        <!-- D. LEFT & RIGHT VINTAGE BRASS GRAMOPHONES WITH FLOATING MUSICAL NOTES -->
-                        <!-- Left Gramophone -->
-                        <g transform="translate(25, 325)">
-                            <!-- Wooden Base Box -->
-                            <polygon points="10,125 110,125 120,165 0,165" fill="#7A4B24" stroke="#3B220C" stroke-width="2"/>
-                            <rect x="18" y="133" width="84" height="24" fill="#9C6334" stroke="#3B220C" stroke-width="1.5"/>
-                            <!-- Brass Tonearm -->
-                            <path d="M60,125 Q20,115 35,75" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/>
-                            <!-- Fluted Brass Horn (Pulses to the Music!) -->
-                            <g class="gramophone-horn-anim">
-                                <ellipse cx="85" cy="55" rx="58" ry="54" fill="url(#brassHornGrad)" stroke="#4A2E04" stroke-width="2"/>
-                                <circle cx="72" cy="62" r="14" fill="#2B1903"/>
-                                <!-- Scalloped Horn Petals -->
-                                <path d="M85,1 L72,62 M128,18 L72,62 M143,55 L72,62 M128,92 L72,62 M85,109 L72,62 M42,92 L72,62 M27,55 L72,62 M42,18 L72,62" stroke="#4A2E04" stroke-width="1.5" opacity="0.65"/>
-                            </g>
-                            <!-- Floating Musical Notes from Left Gramophone -->
-                            <text x="110" y="15" fill="#683A6C" font-size="24" class="music-note-float-1">♪</text>
-                            <text x="140" y="35" fill="#D4AF37" font-size="22" class="music-note-float-2">♫</text>
-                            <text x="90" y="-5" fill="#7A111E" font-size="20" class="music-note-float-3">♬</text>
-                        </g>
-
-                        <!-- Right Gramophone (Mirrored) -->
-                        <g transform="translate(775, 325) scale(-1, 1)">
-                            <polygon points="10,125 110,125 120,165 0,165" fill="#7A4B24" stroke="#3B220C" stroke-width="2"/>
-                            <rect x="18" y="133" width="84" height="24" fill="#9C6334" stroke="#3B220C" stroke-width="1.5"/>
-                            <path d="M60,125 Q20,115 35,75" fill="none" stroke="#D4AF37" stroke-width="7" stroke-linecap="round"/>
-                            <g class="gramophone-horn-anim">
-                                <ellipse cx="85" cy="55" rx="58" ry="54" fill="url(#brassHornGrad)" stroke="#4A2E04" stroke-width="2"/>
-                                <circle cx="72" cy="62" r="14" fill="#2B1903"/>
-                                <path d="M85,1 L72,62 M128,18 L72,62 M143,55 L72,62 M128,92 L72,62 M85,109 L72,62 M42,92 L72,62 M27,55 L72,62 M42,18 L72,62" stroke="#4A2E04" stroke-width="1.5" opacity="0.65"/>
-                            </g>
-                            <text x="110" y="15" fill="#683A6C" font-size="24" class="music-note-float-2">♪</text>
-                            <text x="140" y="35" fill="#D4AF37" font-size="22" class="music-note-float-1">♫</text>
-                        </g>
-
-                        <!-- Auspicious Kalash & Marigold Thali on Stage Floor -->
-                        <g transform="translate(155, 465)">
-                            <ellipse cx="35" cy="25" rx="35" ry="10" fill="#D4AF37" stroke="#7A4B24" stroke-width="1.5"/>
-                            <circle cx="35" cy="14" r="12" fill="#B87333" stroke="#5C3A18" stroke-width="1.5"/>
-                            <path d="M35,-2 L27,8 L43,8 Z" fill="#5D9372"/>
-                            <!-- Marigold Garland Ring -->
-                            <circle cx="12" cy="28" r="5" fill="#FF9933"/>
-                            <circle cx="23" cy="31" r="5" fill="#FFC72C"/>
-                            <circle cx="35" cy="32" r="5" fill="#FF9933"/>
-                            <circle cx="47" cy="31" r="5" fill="#FFC72C"/>
-                            <circle cx="58" cy="28" r="5" fill="#FF9933"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <!-- LIVE COUNTDOWN TIMER BAR ON TERRACE -->
-                <div class="w-full max-w-xl mx-auto -mt-3 relative z-30 bg-stone-900/95 border-2 border-gold rounded-2xl p-3 sm:p-4 shadow-2xl text-cream">
-                    <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] uppercase text-gold-light mb-2">
-                        <span class="lang-en">Countdown to Wedding Celebration • 21 Nov 2026</span>
-                        <span class="lang-hi hidden font-deva">शुभ विवाह की घड़ी • 21 नवम्बर 2026</span>
+                <!-- Host Contact Card -->
+                <div class="bg-gradient-to-r from-cream-warm via-white to-cream-warm border-2 border-gold rounded-3xl p-6 sm:p-8 text-center shadow-xl">
+                    <p class="font-cinzel text-xs tracking-[0.25em] text-lavender-deep font-bold uppercase">A Cordial Invitation From</p>
+                    <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-espresso mt-1">Sh. B.N. Sharma</h3>
+                    <p class="text-sm sm:text-base text-espresso/90 mt-1">
+                        Mohanapur, Badkatola, Bhajuram Chauraha, Padari Bazar, Gorakhpur (U.P.)
                     </p>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div class="bg-white/10 rounded-xl py-2 px-1 border border-gold/30">
-                            <div id="cd-days" class="font-playfair text-2xl sm:text-3xl font-bold text-gold-light">00</div>
-                            <div class="text-[9px] sm:text-[10px] font-cinzel uppercase tracking-widest text-cream/75">Days</div>
-                        </div>
-                        <div class="bg-white/10 rounded-xl py-2 px-1 border border-gold/30">
-                            <div id="cd-hours" class="font-playfair text-2xl sm:text-3xl font-bold text-gold-light">00</div>
-                            <div class="text-[9px] sm:text-[10px] font-cinzel uppercase tracking-widest text-cream/75">Hours</div>
-                        </div>
-                        <div class="bg-white/10 rounded-xl py-2 px-1 border border-gold/30">
-                            <div id="cd-mins" class="font-playfair text-2xl sm:text-3xl font-bold text-gold-light">00</div>
-                            <div class="text-[9px] sm:text-[10px] font-cinzel uppercase tracking-widest text-cream/75">Mins</div>
-                        </div>
-                        <div class="bg-white/10 rounded-xl py-2 px-1 border border-gold/30">
-                            <div id="cd-secs" class="font-playfair text-2xl sm:text-3xl font-bold text-gold-light">00</div>
-                            <div class="text-[9px] sm:text-[10px] font-cinzel uppercase tracking-widest text-cream/75">Secs</div>
-                        </div>
+                    <div class="mt-5 flex flex-wrap justify-center gap-3">
+                        <a href="tel:+916394698686" class="px-5 py-2.5 rounded-full bg-lavender-deep text-white font-bold text-xs sm:text-sm shadow hover:bg-lavender-dark transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone"></i> 6394698686
+                        </a>
+                        <a href="tel:+919415887626" class="px-5 py-2.5 rounded-full bg-lavender-deep text-white font-bold text-xs sm:text-sm shadow hover:bg-lavender-dark transition flex items-center gap-2">
+                            <i class="fa-solid fa-phone"></i> 9415887626
+                        </a>
+                        <a href="https://wa.me/916394698686?text=Namaste!%20Heartiest%20congratulations%20on%20the%20wedding%20of%20Piyush%20%26%20Sabhya%20on%2021%20Nov%202026!" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow hover:bg-emerald-500 transition flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Send Blessings on WhatsApp
+                        </a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- =================================================================
-             SECTION 2: SACRED MANTRAS & COUPLE FAMILY LINEAGE
-             ================================================================= -->
-        <section id="couple-details" class="py-12 px-4 sm:px-8 relative border-t border-gold/40">
-            
-            <!-- Sacred Sanskrit Shlokas from Original Cards -->
-            <div class="reveal-up max-w-2xl mx-auto text-center bg-white/75 backdrop-blur-sm border-2 border-gold rounded-3xl p-6 sm:p-8 shadow-lg mb-12">
-                <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-lavender/15 border border-lavender flex items-center justify-center text-lavender-deep text-2xl font-bold">
-                    ॐ
-                </div>
-                <p class="font-deva text-crimson font-bold text-base sm:text-lg mb-2">
-                    !! श्री गणेशाय नमः !!
-                </p>
-                <div class="space-y-2 text-xs sm:text-sm font-deva text-espresso leading-relaxed">
-                    <p>
-                        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभः ।<br>
-                        निर्विघ्नं कुरु मे देवः सर्वकार्येषु सर्वदा ॥
-                    </p>
-                    <div class="w-20 h-px bg-gold mx-auto my-2"></div>
-                    <p>
-                        मंगलम् भगवान विष्णुः मंगलम् गरुणाध्वजः ।<br>
-                        मंगलम् पुण्डरीकाक्षः, मंगलायतनो हरिः ॥
-                    </p>
-                </div>
+        <!-- Footer -->
+        <footer class="py-6 px-4 text-center bg-lavender-dark text-cream-light border-t-2 border-gold">
+            <p class="font-deva text-xs sm:text-sm text-gold-light">
+                नोट : प्रवेश हेतु इस कार्ड को अपने साथ अवश्य लाये ।
+            </p>
+            <p class="font-cinzel text-[11px] tracking-widest uppercase text-white/80 mt-1">
+                Piyush &hearts; Sabhya • Saturday, 21 November 2026
+            </p>
+        </footer>
 
-                <div class="mt-6 pt-5 border-t border-gold/40">
-                    <p class="font-cinzel text-xs tracking-[0.25em] text-lavender-deep uppercase font-bold">
-                        Royal Invitation &amp; Blessings
-                    </p>
-                    <h2 class="lang-en font-playfair font-bold text-2xl sm:text-3xl text-espresso mt-1">
-                        Smt. Bindu Sharma &amp; Sh. B.N. Sharma
-                    </h2>
-                    <h2 class="lang-hi hidden font-hindi text-2xl sm:text-3xl text-crimson mt-1">
-                        श्रीमती बिन्दु शर्मा एवं श्री बी. एन. शर्मा
-                    </h2>
-                    <p class="lang-en text-base sm:text-lg text-espresso/85 italic mt-2">
-                        Request the honour of your presence &amp; blessings on the auspicious occasion of the Wedding Ceremony of their beloved son
-                    </p>
-                    <p class="lang-hi hidden font-deva text-sm sm:text-base text-espresso/90 mt-2">
-                        अपने सुपुत्र के शुभ विवाह के पावन अवसर पर आपकी गरिमामयी उपस्थिति एवं आशीर्वाद की सादर कामना करते हैं
-                    </p>
-                </div>
-            </div>
+    </main>
 
-            <!-- Bride & Groom Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                
-                <!-- GROOM CARD -->
-                <div class="reveal-up bg-white/85 backdrop-blur-sm border-2 border-gold rounded-3xl p-6 sm:p-8 text-center shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-lavender-deep via-gold to-lavender-deep"></div>
-                    <span class="px-3.5 py-1 rounded-full bg-lavender/15 border border-lavender/40 text-lavender-deep font-cinzel text-xs font-bold uppercase tracking-widest">
-                        The Groom • वर
-                    </span>
+    <!-- =================================================================
+         JAVASCRIPT: YOUTUBE API (START AT 10s ON ENVELOPE CLICK),
+         CONFETTI ENGINE, COUPLE SCENE SWITCHER & PHOTO CUSTOMIZER
+         ================================================================= -->
+    <script>
+        /* ---------------------------------------------------------------
+           1. YOUTUBE PLAYER API — STARTS AT EXACTLY 10 SECONDS ON ENVELOPE CLICK
+           --------------------------------------------------------------- */
+        var ytPlayer;
+        var isYtReady = false;
+        var isPlaying = false;
+        var isMuted = false;
+        var playRequestedOnEnvelope = false;
 
-                    <h3 class="lang-en font-script text-5xl text-espresso mt-3">Piyush Sharma</h3>
-                    <h3 class="lang-hi hidden font-hindi text-4xl text-crimson mt-3">चि० पियूष शर्मा</h3>
+        // Load YouTube IFrame API asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                    <div class="w-16 h-0.5 bg-gold mx-auto my-3"></div>
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-wedding-player', {
+                height: '100%',
+                width: '100%',
+                videoId: '-bNwqXvMuB8',
+                playerVars: {
+                    'autoplay': 0,
+                    'start': 10,       // Pre-configured to start at 10 seconds
+                    'controls': 1,
+                    'rel': 0,
+                    'playsinline': 1,
+                    'loop': 1,
+                    'playlist': '-bNwqXvMuB8'
+                },
+                events: {
+                    'onReady': onYtPlayerReady,
+                    'onStateChange': onYtPlayerStateChange
+                }
+            });
+        }
 
-                    <div class="space-y-1.5 text-sm sm:text-base text-espresso">
-                        <p class="text-xs uppercase font-cinzel tracking-widest text-lavender-deep font-bold">Beloved Son Of</p>
-                        <p class="font-bold text-lg">Smt. Bindu Sharma &amp; Sh. B.N. Sharma</p>
-                        <p class="text-xs sm:text-sm text-espresso/80 italic">
-                            (Grand S/o Late Smt. Tapeshwari Devi &amp; Late Sh. Bhimal Sharma)
-                        </p>
-                        <p class="text-xs text-espresso/75 pt-3 mt-3 border-t border-gold/30">
-                            <i class="fa-solid fa-location-dot text-crimson mr-1"></i>
-                            Mohanapur, Badkatola, Bhajuram Chauraha, Padari Bazar, Gorakhpur (U.P.)
-                        </p>
-                    </div>
-                </div>
+        function onYtPlayerReady(event) {
+            isYtReady = true;
+            // Cue at 10 seconds so it is buffered and ready for instant click
+            if (playRequestedOnEnvelope) {
+                playWeddingSongAtTenSeconds();
+            }
+        }
 
-                <!-- BRIDE CARD -->
-                <div class="reveal-up bg-white/85 backdrop-blur-sm border-2 border-gold rounded-3xl p-6 sm:p-8 text-center shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-gold via-crimson to-gold"></div>
-                    <span class="px-3.5 py-1 rounded-full bg-crimson/10 border border-crimson/30 text-crimson font-cinzel text-xs font-bold uppercase tracking-widest">
-                        The Bride • वधू
-                    </span>
+        function playWeddingSongAtTenSeconds() {
+            if (ytPlayer && isYtReady && typeof ytPlayer.playVideo === 'function') {
+                try {
+                    ytPlayer.unMute();
+                    ytPlayer.setVolume(100);
+                    ytPlayer.seekTo(10, true);
+                    ytPlayer.playVideo();
+                    isMuted = false;
+                    updateAudioUI(true);
+                } catch (err) {
+                    console.warn("Audio start error:", err);
+                }
+            } else {
+                playRequestedOnEnvelope = true;
+            }
+        }
 
-                    <h3 class="lang-en font-script text-5xl text-espresso mt-3">Sabhya Vishwakarma</h3>
-                    <h3 class="lang-hi hidden font-hindi text-4xl text-crimson mt-3">आयु० सभ्या विश्वकर्मा</h3>
+        function restartFromTenSeconds() {
+            playWeddingSongAtTenSeconds();
+            spawnConfettiBurst(25);
+        }
 
-                    <div class="w-16 h-0.5 bg-gold mx-auto my-3"></div>
+        function onYtPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updateAudioUI(true);
+            } else if (event.data === YT.PlayerState.PAUSED) {
+                isPlaying = false;
+                updateAudioUI(false);
+            } else if (event.data === YT.PlayerState.ENDED) {
+                // Loop back to 10 seconds when song ends
+                ytPlayer.seekTo(10, true);
+                ytPlayer.playVideo();
+            }
+        }
 
-                    <div class="space-y-1.5 text-sm sm:text-base text-espresso">
-                        <p class="text-xs uppercase font-cinzel tracking-widest text-
+        function toggleMusicPlayback() {
+            if (!ytPlayer || !isYtReady) {
+                playRequestedOnEnvelope = true;
+                return;
+            }
+            if (isPlaying) {
+                ytPlayer.pauseVideo();
+            } else {
+                ytPlayer.unMute();
+                // If current time is less than 10s, jump to 10s
+                if (ytPlayer.getCurrentTime && ytPlayer.getCurrentTime() < 9.5) {
+                    ytPlayer.seekTo(10, true);
+                }
+                ytPlayer.playVideo();
+            }
+        }
+
+        function toggleMuteAudio() {
+            if (!ytPlayer || !isYtReady) return;
+            const muteIcon = document.getElementById('topMuteIcon');
+            if (ytPlayer.isMuted()) {
+                ytPlayer.unMute();
+                isMuted = false;
+                muteIcon.className = 'fa-solid fa-volume-high text-base sm:text-lg';
+            } else {
+                ytPlayer.mute();
+                isMuted = true;
+                muteIcon.className = 'fa-solid fa-volume-xmark text-base sm:text-lg text-red-300';
+            }
+        }
+
+        function setMusicVolume(val) {
+            if (ytPlayer && isYtReady) {
+                ytPlayer.unMute();
+                ytPlayer.setVolume(parseInt(val, 10));
+            }
+        }
+
+        function updateAudioUI(playing) {
+            const playIcon = document.getElementById('topPlayIcon');
+            if (playing) {
+                playIcon.className = 'fa-solid fa-pause text-base sm:text-lg';
+            } else {
+                playIcon.className = 'fa-solid fa-play text-base sm:text-lg ml-0.5';
+            }
+        }
+
+        // Update live song timer badge
+        setInterval(() => {
+            if (ytPlayer && isYtReady && isPlaying && typeof ytPlayer.getCurrentTime === 'function') {
+                const sec = Math.floor(ytPlayer.getCurrentTime());
+                const m = Math.floor(sec / 60);
+                const s = String(sec % 60).padStart(2, '0');
+                const badge = document.getElementById('songTimerBadge');
+                if (badge) badge.textContent = `${m}:${s}`;
+            }
+        }, 1000);
+
+        function toggleYoutubeDrawer() {
+            const drawer = document.getElementById('youtubeDrawer');
+            drawer.classList.toggle('opacity-0');
+            drawer.classList.toggle('pointer-events-none');
+            drawer.classList.toggle('translate-y-4');
+        }
+
+        /* ---------------------------------------------------------------
+           2. 3D ROYAL ENVELOPE OPENING SEQUENCE ON CLICK
+           --------------------------------------------------------------- */
+        var envelopeOpened = false;
+        function triggerEnvelopeOpen() {
+            if (envelopeOpened) return;
+            envelopeOpened = true;
+
+            const envBox = document.getElementById('envelopeBox');
+            const envStage = document.getElementById('envelopeStage');
+
+            // 1. Start YouTube Song at 0:10 immediately inside the user click handler!
+            playWeddingSongAtTenSeconds();
+
+            // 2. Open 3D Top Flap & Slide Invitation Card Up
+            envBox.classList.add('opening');
+            envStage.classList.add('curtains-part');
+
+            // 3. Celebratory Confetti & Marigold Burst
+            spawnConfettiBurst(75);
+
+            // 4. Transition smoothly into the main illustrated stage
+            setTimeout(() => {
+                envStage.classList.add('stage-hidden');
+                spawnConfettiBurst(40);
+            }, 1850);
+        }
+
+        /* ---------------------------------------------------------------
+           3. SWITCH BETWEEN SANGEET DANCE & VARMALA COUPLE ILLUSTRATIONS
+           --------------------------------------------------------------- */
+        function switchCoupleScene(scene) {
+            const sangeetGroup = document.getElementById('coupleSceneSangeet');
+            const varmalaGroup = document.getElementById('coupleSceneVarmala');
+            const btnSangeet = document.getElementById('sceneBtnSangeet');
+            const btnVarmala = document.getElementById('sceneBtnVarmala');
+
+            if (scene === 'varmala') {
+                sangeetGroup.classList.add('hidden');
+                varmalaGroup.classList.remove('hidden');
+                btnVarmala.className = 'px-4 py-1.5 rounded-full bg-lavender-deep text-white font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition';
+                btnSangeet.className = 'px-4 py-1.5 rounded-full bg-white/90 text-espresso hover:bg-gold/20 font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition';
+            } else {
+                varmalaGroup.classList.add('hidden');
+                sangeetGroup.classList.remove('hidden');
+                btnSangeet.className = 'px-4 py-1.5 rounded-full bg-lavender-deep text-white font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition';
+                btnVarmala.className = 'px-4 py-1.5 rounded-full bg-white/90 text-espresso hover:bg-gold/20 font-cinzel font-bold text-[11px] sm:text-xs tracking-wider uppercase shadow-md border border-gold transition';
+            }
+            spawnConfettiBurst(35);
+        }
+
+        function boostCoupleDance() {
+            const sangeetGroup = document.getElementById('coupleSceneSangeet');
+            const varmalaGroup = document.getElementById('coupleSceneVarmala');
+            sangeetGroup.classList.add('couple-hyper-dance');
+            varmalaGroup.classList.add('couple-hyper-dance');
+            spawnConfettiBurst(60);
+            setTimeout(() => {
+                sangeetGroup.classList.remove('couple-hyper-dance');
+                varmalaGroup.classList.remove('couple-hyper-dance');
+            }, 4500);
+        }
+
+        /* ---------------------------------------------------------------
+           4. CUSTOM COUPLE PHOTO UPLOADER
+           --------------------------------------------------------------- */
+        function togglePhotoModal() {
+            const modal = document.getElementById('photoModal');
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+
+        function handlePhotoUpload(event, role) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const strip = document.getElementById('customPhotosStrip');
+                strip.classList.remove('hidden');
+                if (role === 'groom') {
+                    document.getElementById('groomUploadedImg').src = e.target.result;
+                } else {
+                    document.getElementById('brideUploadedImg').src = e.target.result;
+                }
+                spawnConfettiBurst(30);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        /* ---------------------------------------------------------------
+           5. BILINGUAL LANGUAGE TOGGLE (ENGLISH / HINDI)
+           --------------------------------------------------------------- */
+        var langMode = 'en';
+        function toggleLanguageMode() {
+            langMode = langMode === 'en' ? 'hi' : 'en';
+            document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', langMode === 'hi'));
+            document.querySelectorAll('.lang-hi').forEach(el => el.classList.toggle('hidden', langMode === 'en'));
+            document.getElementById('langSwitchLabel').textContent = langMode === 'en' ? 'हिन्दी' : 'English';
+        }
+
+        /* ---------------------------------------------------------------
+           6. LIVE COUNTDOWN TO 21 NOVEMBER 2026, 5:00 PM
+           --------------------------------------------------------------- */
+        function refreshCountdown() {
+            const target = new Date('2026-11-21T17:00:00+05:30').getTime();
+            const now = new Date().getTime();
+            const diff = Math.max(0, target - now);
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cdDays').textContent = String(d).padStart(2, '0');
+            document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+            document.getElementById('cdMins').textContent = String(m).padStart(2, '0');
+            document.getElementById('cdSecs').textContent = String(s).padStart(2, '0');
+        }
+        setInterval(refreshCountdown, 1000);
+        refreshCountdown();
+
+        /* ---------------------------------------------------------------
+           7. 60FPS WATERCOLOR PETALS, GOLD FOIL CONFETTI & SPARKLES CANVAS
+           --------------------------------------------------------------- */
+        const canvas = document.getElementById('celebrationCanvas');
+        const ctx = canvas.getContext('2d');
+        let confettiParticles = [];
+
+        function resizeCelebrationCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCelebrationCanvas);
+        resizeCelebrationCanvas();
+
+        const palette = ['#D4AF37', '#FF9933', '#9B6B9E', '#F7C59F', '#FFC72C', '#E8B4B8'];
+
+        class ConfettiPetal {
+            constructor(isBurst = false) {
+                this.init(isBurst);
+            }
+            init(isBurst = false) {
+                this.x = isBurst ? canvas.width / 2 + (Math.random() - 0.5) * 260 : Math.random() * canvas.width;
+                this.y = isBurst ? canvas.height / 2 + (Math.random() - 0.5) * 180 : -20 - Math.random() * canvas.height;
+                this.size = 4 + Math.random() * 6;
+                this.vy = isBurst ? (Math.random() - 0.4) * 7 : 0.7 + Math.random() * 1.3;
+                this.vx = isBurst ? (Math.random() - 0.5) * 9 : (Math.random() - 0.5) * 1.1;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.05;
+                this.color = palette[Math.floor(Math.random() * palette.length)];
+                this.alpha = 0.55 + Math.random() * 0.4;
+            }
+            update() {
+                this.y += this.vy;
+                this.x += this.vx + Math.sin(this.angle) * 0.35;
+                this.angle += this.spin;
+                if (this.vy < 1.2) this.vy += 0.04; // gentle gravity recovery after burst
+
+                if (this.y > canvas.height + 25 || this.x < -30 || this.x > canvas.width + 30) {
+                    this.init(false);
+                    this.y = -15;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size, this.size * 0.6, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 36; i++) {
+            confettiParticles.push(new ConfettiPetal(false));
+        }
+
+        function spawnConfettiBurst(count) {
+            for (let i = 0; i < count; i++) {
+                if (confettiParticles.length < 130) {
+                    confettiParticles.push(new ConfettiPetal(true));
+                }
+            }
+        }
+
+        function animateCelebration() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < confettiParticles.length; i++) {
+                confettiParticles[i].update();
+                confettiParticles[i].draw();
+            }
+            requestAnimationFrame(animateCelebration);
+        }
+
+        window.onload = function () {
+            animateCelebration();
+
+            // Scroll reveal observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.reveal-item').forEach(el => observer.observe(el));
+        };
+    </script>
+</body>
+</html>
